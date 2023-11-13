@@ -8,7 +8,8 @@
 
 	import { Accordion, AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
-	import { url } from 'inspector';
+
+	$: console.log(JSON.stringify($page.url.pathname.length));
 </script>
 
 <SvelteToast
@@ -25,19 +26,23 @@
 				<ul class="flex items-center justify-center space-x-2">
 					<li>
 						<a
-							class="nav btn btn-sm variant-filled-surface
-								{$page.url.pathname == '' ? 'variant-outline-surface' : 'variant-filled-surface'}
+							class="nav btn btn-sm
+								{$page.url.pathname === '/' ? 'variant-outline-surface' : 'variant-filled-surface'}
 							"
-							href="/">Sākums {$page.url.pathname}</a
+							href="/"
 						>
+							Sākums
+						</a>
 					</li>
 					<li>
 						<a
 							class="nav btn btn-sm
-								{$page.url.pathname == '/about' ? 'variant-outline-surface' : 'variant-filled-surface'}
+								{$page.url.pathname === '/about' ? 'variant-outline-surface' : 'variant-filled-surface'}
 							"
-							href="/about">Par mums</a
+							href="/about"
 						>
+							Par mums
+						</a>
 					</li>
 				</ul>
 			</svelte:fragment>

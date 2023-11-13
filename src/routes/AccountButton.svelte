@@ -30,7 +30,7 @@
 						</div>
 						<div class="content p-3">
 							<button
-								class="btn variant-filled"
+								class="btn variant-filled-error"
 								on:click={() => {
 									$pb && $pb.authStore.clear();
 									location.reload();
