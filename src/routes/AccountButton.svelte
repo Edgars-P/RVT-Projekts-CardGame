@@ -14,6 +14,7 @@
 <ul>
 	<li>
 		{#if $account}
+			{@debug $account}
 			<div class="account">
 				<div class="name" use:melt={$pTrigger}>
 					<Avatar

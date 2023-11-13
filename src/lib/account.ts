@@ -16,7 +16,7 @@ interface user {
 	avatar: string;
 }
 
-export const pb = writable<PocketBase | false>(false, (set) => {
+export const pb = writable<PocketBase | undefined>(undefined, (set) => {
 	if (browser) {
 		const pb = new PocketBase('http://localhost:8090');
 		set(pb);

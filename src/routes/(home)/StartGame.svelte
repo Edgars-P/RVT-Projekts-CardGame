@@ -1,17 +1,26 @@
 <script lang="ts">
+	import { account, pb } from '$lib/account';
 	import { Stepper, Step } from '@skeletonlabs/skeleton';
+	import type { RecordModel } from 'pocketbase';
 
-	const cardSets = [
-		{ name: 'Cards against humanity (base game)', id: 'cah-base' },
-		{ name: 'Cards against humanity (90s nostalgia)', id: 'cah-90s' },
-		{ name: 'Cards against humanity (absurd box)', id: 'cah-absurd' },
-		{ name: 'Cards against humanity (ai pack)', id: 'cah-ai' }
-	];
+	let selectedCardSets: RecordModel[] = [];
 
-	let selectedCardSets: typeof cardSets = [];
-
-	function onCompleteHandler(e: Event): void {
+	async function onCompleteHandler(e: Event) {
 		console.log('event:complete', e);
+
+		const data = {
+			creator: $account?.id,
+			secret: crypto.randomUUID(),
+			rules: ['rule1'],
+			cardSets: selectedCardSets.map((x) => x.id)
+		};
+
+		const record = await $pb?.collection('games').create(data);
+
+		if (record) {
+			console.log('record', record);
+			location.href = `/game/host?id=${record.id}`;
+		}
 	}
 </script>
 
@@ -37,23 +46,27 @@
 
 		<h1 class="h3 text-center">CardGame komplekti</h1>
 		<div class="grid grid-cols-2 gap-4">
-			{#each cardSets as cardSet}
-				<button
-					class="card card-hover bg-surface-200 {selectedCardSets.includes(cardSet)
-						? '!bg-success-200'
-						: ''}"
-					on:click={() => {
-						if (selectedCardSets.includes(cardSet)) {
-							selectedCardSets = selectedCardSets.filter((x) => x !== cardSet);
-						} else {
-							selectedCardSets = [...selectedCardSets, cardSet];
-						}
-					}}
-				>
-					<div class="card-header">{cardSet.name}</div>
-					<div class="content">aaaaa</div>
-				</button>
-			{/each}
+			{#await $pb?.collection('cardSets').getFullList({ filter: 'official = true' })}
+				<h1>Loading...</h1>
+			{:then cardSets}
+				{#each cardSets ?? [] as cardSet}
+					<button
+						class="card card-hover bg-surface-200 {selectedCardSets.includes(cardSet)
+							? '!bg-success-200'
+							: ''}"
+						on:click={() => {
+							if (selectedCardSets.includes(cardSet)) {
+								selectedCardSets = selectedCardSets.filter((x) => x !== cardSet);
+							} else {
+								selectedCardSets = [...selectedCardSets, cardSet];
+							}
+						}}
+					>
+						<div class="card-header font-bold">{cardSet.name}</div>
+						<div class="content">{cardSet.description}</div>
+					</button>
+				{/each}
+			{/await}
 		</div>
 
 		<div>
