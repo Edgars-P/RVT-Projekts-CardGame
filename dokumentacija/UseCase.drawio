@@ -1,41 +1,72 @@
-<mxfile host="app.diagrams.net" modified="2023-11-13T17:10:03.598Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="hv2mlcjFqMmM5Gexm0eM" version="22.1.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-13T17:13:57.554Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="q5t6CglunXOfUD8RMp-S" version="22.1.0" type="github">
   <diagram name="Page-1" id="wWv0QKPpNUzA6Ld12Msu">
-    <mxGraphModel dx="988" dy="528" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1728" dy="924" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-5" value="Mājaslapa" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
-          <mxGeometry x="170" y="130" width="670" height="630" as="geometry" />
+          <mxGeometry x="170" y="130" width="660" height="630" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-7" value="Pārvaldīt kāršu komplektus" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-5">
-          <mxGeometry x="10" y="40" width="140" height="50" as="geometry" />
+          <mxGeometry x="79" y="40" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-8" value="Izveidot kāršu komplektu" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-5">
-          <mxGeometry x="10" y="100" width="140" height="50" as="geometry" />
+          <mxGeometry x="79" y="100" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-9" value="Iegādāties kāršu komplektu" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-5">
-          <mxGeometry x="10" y="160" width="140" height="50" as="geometry" />
+          <mxGeometry x="79" y="160" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-10" value="Izveidot jaunu spēli" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-5">
-          <mxGeometry x="10" y="220" width="140" height="50" as="geometry" />
+          <mxGeometry x="79" y="220" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-19" value="Spēle" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-5">
-          <mxGeometry x="15" y="280" width="265" height="340" as="geometry" />
+          <mxGeometry x="15" y="280" width="205" height="340" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-25" value="Izpēlēt jautājuma kārti" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-19">
-          <mxGeometry x="15" y="40" width="140" height="50" as="geometry" />
+          <mxGeometry x="35" y="40" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-26" value="Pārskatīt spēles rezultātu" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-19">
-          <mxGeometry x="15" y="100" width="140" height="50" as="geometry" />
+          <mxGeometry x="35" y="100" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-27" value="Redzēt dalībniekus" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-19">
-          <mxGeometry x="15" y="160" width="140" height="50" as="geometry" />
+          <mxGeometry x="35" y="160" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-28" value="Pievienoties spēlei" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-19">
-          <mxGeometry x="15" y="220" width="140" height="50" as="geometry" />
+          <mxGeometry x="35" y="220" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-29" value="Izspēlēt atbilžu kārti" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-19">
-          <mxGeometry x="15" y="280" width="140" height="50" as="geometry" />
+          <mxGeometry x="35" y="280" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-36" value="Sistēmas pārvaldība" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-5">
+          <mxGeometry x="240" y="40" width="405" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-42" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;dashed=1;" edge="1" parent="GtoTZNwH6GSO2kxzhmJJ-36" source="GtoTZNwH6GSO2kxzhmJJ-37" target="GtoTZNwH6GSO2kxzhmJJ-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-44" value="&amp;lt;&amp;lt;iekļauj&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" connectable="0" parent="GtoTZNwH6GSO2kxzhmJJ-42">
+          <mxGeometry x="-0.5012" y="-1" relative="1" as="geometry">
+            <mxPoint x="-14" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-37" value="Dzēst spēli" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-36">
+          <mxGeometry x="240" y="40" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-38" value="Skatīt visas spēles" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-36">
+          <mxGeometry x="15" y="40" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-43" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;dashed=1;" edge="1" parent="GtoTZNwH6GSO2kxzhmJJ-36" source="GtoTZNwH6GSO2kxzhmJJ-39" target="GtoTZNwH6GSO2kxzhmJJ-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-45" value="&amp;lt;&amp;lt;iekļauj&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" connectable="0" parent="GtoTZNwH6GSO2kxzhmJJ-43">
+          <mxGeometry x="-0.1529" relative="1" as="geometry">
+            <mxPoint y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-39" value="Dzēst lietotāju" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-36">
+          <mxGeometry x="240" y="110" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-40" value="Skatīt visus lietotājus" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GtoTZNwH6GSO2kxzhmJJ-36">
+          <mxGeometry x="15" y="110" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-12" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GtoTZNwH6GSO2kxzhmJJ-6" target="GtoTZNwH6GSO2kxzhmJJ-7">
           <mxGeometry relative="1" as="geometry" />
@@ -70,8 +101,14 @@
         <mxCell id="GtoTZNwH6GSO2kxzhmJJ-16" value="Viesis" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
           <mxGeometry x="30" y="540" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-35" value="Spēlētājs" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
-          <mxGeometry x="910" y="370" width="30" height="60" as="geometry" />
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-46" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;" edge="1" parent="1" source="GtoTZNwH6GSO2kxzhmJJ-35" target="GtoTZNwH6GSO2kxzhmJJ-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-47" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;" edge="1" parent="1" source="GtoTZNwH6GSO2kxzhmJJ-35" target="GtoTZNwH6GSO2kxzhmJJ-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GtoTZNwH6GSO2kxzhmJJ-35" value="Administrators" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="240" width="30" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
