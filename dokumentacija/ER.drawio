@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-11-14T14:25:57.889Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="LJieFiuqvyiiedsq0Q6u" version="22.1.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-14T14:30:38.596Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="nHeq4nucr7SatIYSr2ec" version="22.1.0" type="github">
   <diagram name="Page-1" id="boCHcTS4KuRH3LGrLZ6n">
     <mxGraphModel dx="1195" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -140,9 +140,6 @@
         <mxCell id="E9g5uc1TUt96TrxoYDHK-35" value="Spēles kārts" style="whiteSpace=wrap;html=1;align=center;fontFamily=Helvetica;fontSize=11;fontColor=default;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="170" y="721" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="gXeqlGldkmFEWeZesSMi-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="E9g5uc1TUt96TrxoYDHK-38" target="gXeqlGldkmFEWeZesSMi-4">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="E9g5uc1TUt96TrxoYDHK-38" value="Izspēlē" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="320" y="711" width="120" height="60" as="geometry" />
         </mxCell>
@@ -212,9 +209,6 @@
         </mxCell>
         <mxCell id="E9g5uc1TUt96TrxoYDHK-65" value="Spēles ID" style="ellipse;whiteSpace=wrap;html=1;align=center;fontFamily=Helvetica;fontSize=11;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="520" y="420" width="100" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="gXeqlGldkmFEWeZesSMi-4" value="Spēles ID" style="ellipse;whiteSpace=wrap;html=1;align=center;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="1">
-          <mxGeometry x="410" y="781" width="100" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
