@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-11-14T15:39:27.418Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="bd5pQ7kn03PvhKJYE4SL" version="22.1.1" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-14T15:42:20.450Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="VxxI9dgTpcTB6P1hOhKd" version="22.1.1" type="github">
   <diagram name="Page-1" id="boCHcTS4KuRH3LGrLZ6n">
-    <mxGraphModel dx="1366" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1024" dy="564" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -116,22 +116,17 @@
         <mxCell id="E9g5uc1TUt96TrxoYDHK-27" value="Spēlētājs" style="whiteSpace=wrap;html=1;align=center;fontFamily=Helvetica;fontSize=11;fontColor=default;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="643" y="950" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="E9g5uc1TUt96TrxoYDHK-31" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" parent="1" source="E9g5uc1TUt96TrxoYDHK-30" target="E9g5uc1TUt96TrxoYDHK-27" edge="1">
+        <mxCell id="RjY2HMoWJRFDwv6zGJCa-34" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" edge="1" parent="1" source="E9g5uc1TUt96TrxoYDHK-30" target="E9g5uc1TUt96TrxoYDHK-27">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="E9g5uc1TUt96TrxoYDHK-30" value="Vārds" style="ellipse;whiteSpace=wrap;html=1;align=center;fontFamily=Helvetica;fontSize=11;fontColor=default;" parent="1" vertex="1">
-          <mxGeometry x="773" y="925" width="100" height="40" as="geometry" />
+          <mxGeometry x="790" y="900" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="E9g5uc1TUt96TrxoYDHK-34" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="E9g5uc1TUt96TrxoYDHK-33" target="E9g5uc1TUt96TrxoYDHK-27" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="753" y="995" />
-              <mxPoint x="753" y="970" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="RjY2HMoWJRFDwv6zGJCa-36" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="E9g5uc1TUt96TrxoYDHK-33" target="E9g5uc1TUt96TrxoYDHK-27">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="E9g5uc1TUt96TrxoYDHK-33" value="Spēlētāja ID" style="ellipse;whiteSpace=wrap;html=1;align=center;fontFamily=Helvetica;fontSize=11;fontColor=default;" parent="1" vertex="1">
-          <mxGeometry x="773" y="975" width="100" height="40" as="geometry" />
+          <mxGeometry x="790" y="1000" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E9g5uc1TUt96TrxoYDHK-50" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" parent="1" source="E9g5uc1TUt96TrxoYDHK-35" target="E9g5uc1TUt96TrxoYDHK-51" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -270,6 +265,12 @@
         </mxCell>
         <mxCell id="RjY2HMoWJRFDwv6zGJCa-28" value="Izveido" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="1">
           <mxGeometry x="150.0000000000001" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RjY2HMoWJRFDwv6zGJCa-35" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" edge="1" parent="1" source="RjY2HMoWJRFDwv6zGJCa-33" target="E9g5uc1TUt96TrxoYDHK-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RjY2HMoWJRFDwv6zGJCa-33" value="Sesijas sīkdatne" style="ellipse;whiteSpace=wrap;html=1;align=center;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="790" y="950" width="100" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
