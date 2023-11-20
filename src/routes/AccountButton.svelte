@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { account, pb } from '$lib/account';
+	import { account } from '$lib/account';
+	import { pb } from '$lib/database';
 	import { createPopover, melt } from '@melt-ui/svelte';
 	import { Avatar } from '@skeletonlabs/skeleton';
 

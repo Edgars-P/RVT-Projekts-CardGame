@@ -3,7 +3,7 @@
 
 	import LogInButton from './LogInButton.svelte';
 	import AccountButton from './AccountButton.svelte';
-	import { account, pb } from '$lib/account';
+	import { account } from '$lib/account';
 	import { SvelteToast } from '@zerodevx/svelte-toast';
 
 	import { Accordion, AppBar, AppShell } from '@skeletonlabs/skeleton';

@@ -1,5 +1,5 @@
 <script>
-	import { pb } from '$lib/account';
+	import { pb } from '$lib/database';
 	import { createPopover, createTabs, melt } from '@melt-ui/svelte';
 	import { Tab, TabGroup } from '@skeletonlabs/skeleton';
 	import { toast } from '@zerodevx/svelte-toast';
@@ -66,7 +66,7 @@
 						on:click={() => {
 							$pb &&
 								$pb
-									.collection('users')
+									.collection('lietotaji')
 									.authWithPassword(input.username, input.password)
 									.then((x) => {
 										location.reload();
@@ -98,7 +98,7 @@
 						on:click={() => {
 							$pb &&
 								$pb
-									.collection('users')
+									.collection('lietotaji')
 									.create({
 										name: input.username,
 										email: Math.random().toString(36).substring(2, 15) + '@example.com',

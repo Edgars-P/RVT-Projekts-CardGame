@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { account, pb } from '$lib/account';
+	import { account } from '$lib/account';
+	import { pb } from '$lib/database';
 	import { Stepper, Step } from '@skeletonlabs/skeleton';
 	import type { RecordModel } from 'pocketbase';
 
@@ -9,13 +10,13 @@
 		console.log('event:complete', e);
 
 		const data = {
-			creator: $account?.id,
+			raditajs: $account?.id,
 			secret: crypto.randomUUID(),
-			rules: ['rule1'],
-			cardSets: selectedCardSets.map((x) => x.id)
+			noteikumi: ['rule1'],
+			karsuKomplekti: selectedCardSets.map((x) => x.id)
 		};
 
-		const record = await $pb?.collection('games').create(data);
+		const record = await $pb?.collection('speles').create(data);
 
 		if (record) {
 			console.log('record', record);
@@ -46,7 +47,7 @@
 
 		<h1 class="h3 text-center">CardGame komplekti</h1>
 		<div class="grid grid-cols-2 gap-4">
-			{#await $pb?.collection('cardSets').getFullList({ filter: 'official = true' })}
+			{#await $pb?.collection('karsuKomplekti').getFullList({ filter: 'official = true' })}
 				<h1>Loading...</h1>
 			{:then cardSets}
 				{#each cardSets ?? [] as cardSet}
