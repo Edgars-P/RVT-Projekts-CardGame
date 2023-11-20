@@ -1,6 +1,7 @@
 import { browser } from '$app/environment';
 import { derived, readable, writable } from 'svelte/store';
 import PocketBase from 'pocketbase';
+import { pb } from './database';
 
 interface user {
 	id: string;
@@ -15,13 +16,6 @@ interface user {
 	name: string;
 	avatar: string;
 }
-
-export const pb = writable<PocketBase | undefined>(undefined, (set) => {
-	if (browser) {
-		const pb = new PocketBase('http://localhost:8090');
-		set(pb);
-	}
-});
 
 export const account = derived(
 	pb,
