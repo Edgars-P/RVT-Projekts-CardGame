@@ -1,28 +1,28 @@
-<mxfile host="app.diagrams.net" modified="2023-11-23T17:42:40.061Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="o7bJf3IxRkeROaMq7Xg2" version="22.1.3" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-23T17:43:11.871Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="aX_grBAJ5AvuzLMCdYpf" version="22.1.3" type="github">
   <diagram name="Page-1" id="y6iwyL3jviqNe1969kEd">
-    <mxGraphModel dx="623" dy="343" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1147" dy="632" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="qmBsTYbLXerOwTPvDhYZ-1" target="qmBsTYbLXerOwTPvDhYZ-2">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;fontStyle=1" edge="1" parent="1" source="qmBsTYbLXerOwTPvDhYZ-1" target="qmBsTYbLXerOwTPvDhYZ-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="qmBsTYbLXerOwTPvDhYZ-1" target="qmBsTYbLXerOwTPvDhYZ-3">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeWidth=2;fontStyle=1" edge="1" parent="1" source="qmBsTYbLXerOwTPvDhYZ-1" target="qmBsTYbLXerOwTPvDhYZ-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-19" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="qmBsTYbLXerOwTPvDhYZ-1" target="qmBsTYbLXerOwTPvDhYZ-4">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-19" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;fontStyle=1" edge="1" parent="1" source="qmBsTYbLXerOwTPvDhYZ-1" target="qmBsTYbLXerOwTPvDhYZ-4">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-1" value="Mājaslapa" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-1" value="Mājaslapa" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="360" y="40" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-2" value="Lietotājs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-2" value="Lietotājs" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="160" y="120" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-3" value="Spēlētājs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-3" value="Spēlētājs" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="360" y="120" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-4" value="Administrators" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-4" value="Administrators" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="560" y="120" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qmBsTYbLXerOwTPvDhYZ-20" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" edge="1" parent="1" source="qmBsTYbLXerOwTPvDhYZ-5">
