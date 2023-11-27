@@ -4,6 +4,8 @@
 	import { pb } from '$lib/database';
 	import type { RecordModel } from 'pocketbase';
 	import { derived, readable } from 'svelte/store';
+	import { createGameMoveStore } from './gameMoves';
+	import GameCard from '$lib/components/GameCard.svelte';
 
 	const gameId = $page.url.searchParams.get('id') as string;
 
@@ -33,6 +35,8 @@
 		},
 		undefined as undefined | RecordModel
 	);
+
+	const gameMoves = createGameMoveStore(gameId);
 </script>
 
 <h1 class="h1">Spēles vadītāja skats</h1>
@@ -40,11 +44,12 @@
 {#if $gameRecord}
 	<p>
 		<br />
-		Pievienojies šai spēlei: https://example.com/game/player?id={gameId}&secret={$gameRecord?.secret}
+		<b>Pievienojies šai spēlei</b>: https://example.com/game/player?id={gameId}&secret={$gameRecord?.secret}
 	</p>
 
 	<p>
-		Jautājuma kārts: {$gameRecord.expand?.jautajumaKarts}
+		<b>Jautājuma kārts:</b>
+		{JSON.stringify($gameRecord.expand?.jautajumaKarts)}
 	</p>
 
 	<button
@@ -56,4 +61,29 @@
 	>
 		aaa
 	</button>
+
+	<hr />
+	<hr />
+	<hr />
+
+	<h1 class="h3">Spēles gājieni</h1>
+
+	<div class="flex flex-row flex-wrap">
+		{#each $gameMoves ?? [] as move}
+			<GameCard card={move.card} />
+		{/each}
+	</div>
+
+	<button
+		class="btn variant-filled variant-filled-primary"
+		on:click={() => {
+			const data = {
+				player: '1yvx62nbhqbmelt',
+				game: gameId,
+				card: 'o1uecs779949rfp'
+			};
+
+			$pb?.collection('spelesGajieni').create(data);
+		}}>Veikt gājienu</button
+	>
 {/if}

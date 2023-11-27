@@ -27,7 +27,7 @@
 					<li>
 						<a
 							class="nav btn btn-sm
-								{$page.url.pathname === '/' ? 'variant-outline-surface' : 'variant-filled-surface'}
+								{$page.url.pathname === '/' ? 'variant-outline-primary' : 'variant-filled-primary'}
 							"
 							href="/"
 						>
@@ -37,7 +37,7 @@
 					<li>
 						<a
 							class="nav btn btn-sm
-								{$page.url.pathname === '/about' ? 'variant-outline-surface' : 'variant-filled-surface'}
+								{$page.url.pathname === '/about' ? 'variant-outline-primary' : 'variant-filled-primary'}
 							"
 							href="/about"
 						>
