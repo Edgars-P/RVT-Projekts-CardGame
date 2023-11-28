@@ -15,7 +15,9 @@
 <ul>
 	<li>
 		{#if $account}
-			{@debug $account}
+			<!--
+				Lietotāja profila poga, kura atver lietotāja profila Drop-Down izvēlni.
+			-->
 			<div class="account">
 				<div class="name" use:melt={$pTrigger}>
 					<Avatar
@@ -25,12 +27,19 @@
 						width="w-10"
 					/>
 				</div>
+
+				<!--
+					Drop-Down izvēlne ar lietotāja vārdu un izrakstīšanās pogu.
+				-->
 				{#if $open}
 					<div class="card" use:melt={$pContent}>
 						<div class="card-header h5">
 							{$account.name ?? $account.username}
 						</div>
 						<div class="content p-3">
+							<!--
+								Izrakstīšanās poga. Tā izraksta lietotāju un atjauno lapu.
+							-->
 							<button
 								class="btn variant-filled-error"
 								on:click={() => {
@@ -44,6 +53,6 @@
 					</div>
 				{/if}
 			</div>
-		{:else}{/if}
+		{/if}
 	</li>
 </ul>

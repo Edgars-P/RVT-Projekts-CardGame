@@ -12,6 +12,9 @@
 	$: console.log(JSON.stringify($page.url.pathname.length));
 </script>
 
+<!--
+	"Toast" ziņu pamatobjekts kas tiek izmantots lai parādītu ziņojumus lietotājam. 
+-->
 <SvelteToast
 	options={{
 		reversed: true,
@@ -19,9 +22,18 @@
 	}}
 />
 
+<!--
+	Galvenais lapas izkārtojums.
+-->
 <AppShell>
 	<svelte:fragment slot="pageHeader">
+		<!--
+			Lapas galvene
+		-->
 		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+			<!--
+				Navigācijas pogas
+			-->
 			<svelte:fragment slot="lead">
 				<ul class="flex items-center justify-center space-x-2">
 					<li>
@@ -46,10 +58,17 @@
 					</li>
 				</ul>
 			</svelte:fragment>
+
+			<!--
+				Logo
+			-->
 			<a class="home" href="/">
 				<div class="logo h3 font-bold">CardGame</div>
 			</a>
 
+			<!--
+				Pārbaida vai lietotājs ir pierakstījies un parāda atbilstošu pogu.
+			-->
 			<svelte:fragment slot="trail">
 				<ul>
 					{#if $account}

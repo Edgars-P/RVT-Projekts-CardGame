@@ -26,6 +26,9 @@
 		defaultValue: 'login'
 	});
 
+	/*
+		Ievaddati tiek saglabāti lai pārslēdot uz reģistrācijas formu tie nepazūd.
+	*/
 	let input = {
 		username: '',
 		password: '',
@@ -33,13 +36,23 @@
 	};
 </script>
 
+<!--
+	Ja lietotājs ir izrakstījies, tad tiek parādīta poga, kura atver
+	pierakstīšanās un reģistrācijas Drop-Down izvēlni.
+-->
 <button use:melt={$pTrigger} type="button" class="btn variant-filled">
 	Ienākt vai reģistrēties
 </button>
 
+<!--
+	Drop-Down izvēlne ar pierakstīšanās un reģistrācijas formām.
+-->
 {#if $open}
 	<div class="card" use:melt={$pContent}>
 		<div class="card-header p-0">
+			<!--
+				Tabu grupa, kura izvēlas kuru no divām izvēlēm rādīt.
+			-->
 			<TabGroup>
 				{#each tabs as tabItem}
 					<Tab bind:group={currentTab} name={tabItem.label} value={tabItem.id}>
@@ -51,6 +64,9 @@
 
 		<div class="content p-3">
 			{#if currentTab == 'login'}
+				<!--
+					Pierakstīšanās forma.
+				-->
 				<form>
 					<label class="label">
 						<span>Lietotājvārds</span>
@@ -64,6 +80,10 @@
 						type="submit"
 						class="btn variant-filled block mt-3 mx-auto"
 						on:click={() => {
+							/*
+								Pierakstās ar lietotājvārdu un paroli.
+								Ja tas izdodas, tad atjauno lapu.
+							*/
 							$pb &&
 								$pb
 									.collection('lietotaji')
@@ -75,10 +95,15 @@
 										console.log(err);
 										toast.push('Nepareizs lietotājvārds vai parole!');
 									});
-						}}>Ienākt</button
+						}}
 					>
+						Ienākt
+					</button>
 				</form>
 			{:else if currentTab == 'register'}
+				<!--
+					Reģistrācijas forma.
+				-->
 				<form>
 					<label class="label">
 						<span>Lietotājvārds</span>
@@ -96,6 +121,10 @@
 						type="submit"
 						class="btn variant-filled block mt-3 mx-auto"
 						on:click={() => {
+							/*
+								Izveido lietotāju ar ievadīto lietotājvārdu un paroli.
+								Ja tas izdodas, tad atjauno lapu.
+							*/
 							$pb &&
 								$pb
 									.collection('lietotaji')
@@ -115,8 +144,10 @@
 									.catch((err) => {
 										console.log(err.data.data);
 									});
-						}}>Reģistrēties</button
+						}}
 					>
+						Reģistrēties
+					</button>
 				</form>
 			{/if}
 		</div>
