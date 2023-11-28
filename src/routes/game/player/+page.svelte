@@ -15,11 +15,18 @@
 
 	let playerRecord = $playerPb?.authStore.model;
 
+	/*
+		Uzreiz kad spēlētājs pievienojas spēlei tam tiek prasīts vārds.
+		Pēc tam programma mēģina izveidot spēlētāja ierakstu ar ID un noslēpumu no URL.
+		Tas neizdosies ja viens vai otrs ir nepareizi.
+	*/
 	onMount(async () => {
 		if (playerRecord && playerRecord.game == gameId) {
 			return;
 		}
 
+		// Izveido viltus lietotājvārdu un paroli
+		// Tas ir nepieciešams lai izmantotu datu bāzes autentifikācijas funkcijas
 		const username = customAlphabet(alphanumeric)();
 		const password = crypto.randomUUID();
 		const data = {
@@ -33,6 +40,7 @@
 			secret: secret
 		};
 
+		// Izveido lietotāju un izvēlas to kā aktīvo.
 		const record = await $playerPb?.collection('speletaji').create(data);
 		const authData = await $playerPb?.collection('speletaji').authWithPassword(username, password);
 

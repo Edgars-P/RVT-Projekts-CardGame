@@ -6,9 +6,11 @@
 
 	let selectedCardSets: RecordModel[] = [];
 
-	async function onCompleteHandler(e: Event) {
-		console.log('event:complete', e);
-
+	/**
+	 * Funkcija tiek izsaukta, kad tiek pabeigts pēdējais solis.
+	 * Izveido spēli datubāzē un pāradresē uz to.
+	 */
+	async function onCompleteHandler() {
 		const data = {
 			raditajs: $account?.id,
 			secret: crypto.randomUUID(),
@@ -25,8 +27,6 @@
 	}
 </script>
 
-<!-- Select a card set, and hit play -->
-
 <Stepper
 	on:complete={onCompleteHandler}
 	stepTerm="Solis"
@@ -34,11 +34,19 @@
 	buttonBackLabel="Atpakaļ"
 	buttonCompleteLabel="Sākt spēli"
 >
+	<!--
+		Solis 1
+		Ievadsolis ar sākuma tekstu.
+	-->
 	<Step>
 		<h1 class="h3">Izveidot jaunu spēli!</h1>
 		<p>Izvēlies kāršu komplektus, dažus vienkāršus noteikumus, un sāc spēli!</p>
 	</Step>
 
+	<!--
+		Solis 2
+		Izvēles solis, kurā tiek izvēlēti kāršu komplekti.
+	-->
 	<Step locked={selectedCardSets.length == 0}>
 		<h1 class="h3">Izvēlies kāršu komplektus</h1>
 		<p>Izvēlies kāršu komplektus, kuri tiks izmantoti spēlē.</p>
@@ -47,6 +55,9 @@
 
 		<h1 class="h3 text-center">CardGame komplekti</h1>
 		<div class="grid grid-cols-2 gap-4">
+			<!--
+				Ielādē visus oficiālos kāršu komplektus un tos parāda kā izvēles pogas.
+			-->
 			{#await $pb?.collection('karsuKomplekti').getFullList({ filter: 'official = true' })}
 				<h1>Loading...</h1>
 			{:then cardSets}
@@ -56,6 +67,9 @@
 							? '!bg-success-200'
 							: ''}"
 						on:click={() => {
+							/*
+								Ja komplekts tiek izvēlēts, tas tiek pievienots selectedCardSets masīvam
+							*/
 							if (selectedCardSets.includes(cardSet)) {
 								selectedCardSets = selectedCardSets.filter((x) => x !== cardSet);
 							} else {
@@ -73,6 +87,9 @@
 		<div>
 			<h1 class="h3 text-center">Mani komplekti</h1>
 
+			<!--
+				Ielādē visus lietotāja izveidotos kāršu komplektus un tos parāda kā izvēles pogas.
+			-->
 			{#each [] as card}
 				<p />
 			{:else}
@@ -84,6 +101,10 @@
 		</div>
 	</Step>
 
+	<!--
+		Solis 3
+		Izvēles solis, kurā tiek izvēlēti noteikumi.
+	-->
 	<Step>
 		<h1 class="h3">Izvēlies noteikumus</h1>
 		<p>Izvēlies kādus noteikumus vēlies izmantot spēlē.</p>
