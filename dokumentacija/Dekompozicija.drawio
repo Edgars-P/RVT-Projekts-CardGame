@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-03T17:00:13.210Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="DIjo0WgZvjGOrQZyGrbQ" version="22.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-03T17:04:33.199Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="7Q0TvX3qg1PjEOyi8Z7u" version="22.1.5" type="github">
   <diagram name="Page-1" id="y6iwyL3jviqNe1969kEd">
-    <mxGraphModel dx="2549" dy="1389" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3398" dy="1852" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -30,7 +30,7 @@
             <mxPoint x="180" y="170" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-5" value="Reģistrēties" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4A4A00;" parent="1" vertex="1">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-5" value="Reģistrēties" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBEB00;" parent="1" vertex="1">
           <mxGeometry x="200" y="180" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qmBsTYbLXerOwTPvDhYZ-21" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" parent="1" source="qmBsTYbLXerOwTPvDhYZ-6" edge="1">
@@ -62,7 +62,7 @@
             <mxPoint x="180" y="370" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-9" value="Skatīt savu spēļu &lt;br&gt;rezultātus" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4A4A00;" parent="1" vertex="1">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-9" value="Skatīt savu spēļu &lt;br&gt;rezultātus" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBEB00;" parent="1" vertex="1">
           <mxGeometry x="200" y="420" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qmBsTYbLXerOwTPvDhYZ-25" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" parent="1" source="qmBsTYbLXerOwTPvDhYZ-10" edge="1">
@@ -70,7 +70,7 @@
             <mxPoint x="379.9999999999999" y="170" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-10" value="Pievienoties spēlei" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4A4A00;" parent="1" vertex="1">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-10" value="Pievienoties spēlei" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBEB00;" parent="1" vertex="1">
           <mxGeometry x="400" y="180" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qmBsTYbLXerOwTPvDhYZ-26" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" parent="1" source="qmBsTYbLXerOwTPvDhYZ-11" edge="1">
@@ -78,7 +78,7 @@
             <mxPoint x="379.9999999999999" y="190" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-11" value="Izspēlēt kārti" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4A4A00;" parent="1" vertex="1">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-11" value="Izspēlēt kārti" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBEB00;" parent="1" vertex="1">
           <mxGeometry x="400" y="300" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qmBsTYbLXerOwTPvDhYZ-27" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" parent="1" source="qmBsTYbLXerOwTPvDhYZ-12" edge="1">
