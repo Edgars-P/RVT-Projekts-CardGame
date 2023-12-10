@@ -36,7 +36,8 @@
 						<div class="card-header h5">
 							{$account.name ?? $account.username}
 						</div>
-						<div class="content p-3">
+						<div class="content p-3 flex flex-wrap flex-col gap-1">
+							<a href="/user" class="btn variant-filled-primary">Iestatījumi</a>
 							<!--
 								Izrakstīšanās poga. Tā izraksta lietotāju un atjauno lapu.
 							-->
