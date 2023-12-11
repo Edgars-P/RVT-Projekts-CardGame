@@ -5,6 +5,7 @@
 	import { pb } from '$lib/database';
 	import { TabGroup, Tab, TabAnchor } from '@skeletonlabs/skeleton';
 	import CardSets from './CardSets.svelte';
+	import MyGames from './MyGames.svelte';
 
 	let tabSet = parseInt($page.url.searchParams.get('tab') ?? '') || 0;
 	$: {
@@ -16,8 +17,9 @@
 <div class="card max-w-5xl mx-auto mt-4 variant-glass">
 	<TabGroup>
 		<Tab bind:group={tabSet} name="Iestatījumi" value={0}>Iestatījumi</Tab>
-		<Tab bind:group={tabSet} name="Iestatījumi" value={1}>Drošība</Tab>
-		<Tab bind:group={tabSet} name="Iestatījumi" value={2}>Kāršu komplekti</Tab>
+		<Tab bind:group={tabSet} name="Drošība" value={1}>Drošība</Tab>
+		<Tab bind:group={tabSet} name="Komplekti" value={2}>Kāršu komplekti</Tab>
+		<Tab bind:group={tabSet} name="Vesture" value={3}>Spēļu vēsture</Tab>
 
 		<div slot="panel" class="p-4">
 			{#if tabSet == 0}
@@ -92,6 +94,8 @@
 				</form>
 			{:else if tabSet == 2}
 				<CardSets />
+			{:else if tabSet == 3}
+				<MyGames />
 			{/if}
 		</div>
 	</TabGroup>
