@@ -18,18 +18,16 @@
 
 	async function createCardSet(name: string, description: string) {
 		// Izveido jaunu kāršu komplektu
-		const cardSet = await $pb?.collection('karsuKomplekti').create({
-			name,
-			description,
-			creator: $account?.id
-		});
-
-		// Atjauno kāršu komplektu sarakstu
-		$pb
+		const cardSet = await $pb
 			?.collection('karsuKomplekti')
-			.getFullList({ filter: `creator = "${$account?.id}"` })
-			.then((cardSets) => {
-				myCardSets.set(cardSets);
+			.create({
+				name,
+				description,
+				creator: $account?.id
+			})
+			.then((newCardSet) => {
+				// Atjauno kāršu komplektu sarakstu
+				myCardSets.update((cardSets) => [...cardSets, newCardSet]);
 			});
 
 		return cardSet;
@@ -48,7 +46,19 @@
 				<a class="btn btn-sm variant-filled-primary" href="/user/cards?cardSet={cardSet.id}">
 					Rediģēt
 				</a>
-				<button class="btn btn-sm variant-filled-error"> Dzēst </button>
+				<button
+					class="btn btn-sm variant-filled-error"
+					on:click={() => {
+						$pb
+							?.collection('karsuKomplekti')
+							.delete(cardSet.id)
+							.then(() => {
+								myCardSets.update((cardSets) => cardSets.filter((c) => c.id !== cardSet.id));
+							});
+					}}
+				>
+					Dzēst
+				</button>
 			</div>
 		</div>
 	{/each}
@@ -62,7 +72,9 @@
 					const form = e.currentTarget;
 					const formData = new FormData(form);
 					const data = Object.fromEntries(formData.entries());
-					await createCardSet(data.name.toString(), data.description.toString());
+					await createCardSet(data.name.toString(), data.description.toString()).then(() => {
+						form.reset();
+					});
 				}}
 			>
 				<div>

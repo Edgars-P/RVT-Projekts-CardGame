@@ -58,7 +58,9 @@
 			<!--
 				Ielādē visus oficiālos kāršu komplektus un tos parāda kā izvēles pogas.
 			-->
-			{#await $pb?.collection('karsuKomplekti').getFullList({ filter: 'official = true' })}
+			{#await $pb
+				?.collection('karsuKomplekti')
+				.getFullList({ filter: 'official = true', requestKey: 'officialCardSets' })}
 				<h1>Loading...</h1>
 			{:then cardSets}
 				{#each cardSets ?? [] as cardSet}
@@ -87,17 +89,34 @@
 		<div>
 			<h1 class="h3 text-center">Mani komplekti</h1>
 
-			<!--
-				Ielādē visus lietotāja izveidotos kāršu komplektus un tos parāda kā izvēles pogas.
-			-->
-			{#each [] as card}
-				<p />
-			{:else}
-				<p class="text-center">
-					Pagaidām komplektu nav.
-					<a href="/account" class="underline">Pievienot jaunu komplektu</a>
-				</p>
-			{/each}
+			<div class="grid grid-cols-2 gap-4">
+				{#await $pb
+					?.collection('karsuKomplekti')
+					.getFullList({ filter: `creator = "${$account?.id}"`, requestKey: 'myCardSets' })}
+					<h1>Ielādē...</h1>
+				{:then cardSets}
+					{#each cardSets ?? [] as cardSet}
+						<button
+							class="card card-hover bg-surface-200 {selectedCardSets.includes(cardSet)
+								? '!bg-success-200'
+								: ''}"
+							on:click={() => {
+								/*
+							Ja komplekts tiek izvēlēts, tas tiek pievienots selectedCardSets masīvam
+						*/
+								if (selectedCardSets.includes(cardSet)) {
+									selectedCardSets = selectedCardSets.filter((x) => x !== cardSet);
+								} else {
+									selectedCardSets = [...selectedCardSets, cardSet];
+								}
+							}}
+						>
+							<div class="card-header font-bold">{cardSet.name}</div>
+							<div class="content">{cardSet.description}</div>
+						</button>
+					{/each}
+				{/await}
+			</div>
 		</div>
 	</Step>
 
