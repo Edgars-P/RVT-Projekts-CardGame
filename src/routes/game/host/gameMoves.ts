@@ -13,7 +13,7 @@ export function createGameMoveStore(gameId: string) {
 				$pb
 					.collection('spelesGajieni')
 					.getFullList({
-						filter: `game = "${gameId}"`,
+						filter: `game = "${gameId}"`
 					})
 					.then((r) => {
 						moves = r;
@@ -28,7 +28,8 @@ export function createGameMoveStore(gameId: string) {
 									moves = [...moves, event.record];
 									set(moves);
 								}
-							}
+							},
+							{}
 						);
 					});
 			}

@@ -37,6 +37,12 @@
 	);
 
 	const gameMoves = createGameMoveStore(gameId);
+
+	const gameBoard = derived(gameMoves, ($gameMoves) => {
+		// Visas atbildes kārtis kopš pēdējās jautājuma kārtis
+
+		const lastQuestionCardIndex = $gameMoves?.findIndex((move) => move.card.type === 'question');
+	});
 </script>
 
 <h1 class="h1">Spēles vadītāja skats</h1>
@@ -51,16 +57,6 @@
 		<b>Jautājuma kārts:</b>
 		{JSON.stringify($gameRecord.expand?.jautajumaKarts)}
 	</p>
-
-	<button
-		on:click={() => {
-			$pb?.collection('speles').update(gameId, {
-				secret: crypto.randomUUID()
-			});
-		}}
-	>
-		aaa
-	</button>
 
 	<hr />
 	<hr />
