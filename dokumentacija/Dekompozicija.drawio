@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-03T17:04:33.199Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="7Q0TvX3qg1PjEOyi8Z7u" version="22.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-12T18:47:52.506Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="ADWWK40afY4EgLbvVjjC" version="22.1.7" type="github">
   <diagram name="Page-1" id="y6iwyL3jviqNe1969kEd">
-    <mxGraphModel dx="3398" dy="1852" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1108" dy="557" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -94,7 +94,7 @@
             <mxPoint x="580" y="170" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-13" value="Skatīt lietotājus" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-13" value="Skatīt lietotājus" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBEB00;" parent="1" vertex="1">
           <mxGeometry x="600" y="180" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qmBsTYbLXerOwTPvDhYZ-29" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" parent="1" source="qmBsTYbLXerOwTPvDhYZ-14" edge="1">
@@ -102,7 +102,7 @@
             <mxPoint x="580" y="200" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="qmBsTYbLXerOwTPvDhYZ-14" value="Skatīt spēles" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="qmBsTYbLXerOwTPvDhYZ-14" value="Skatīt spēles" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EBEB00;" parent="1" vertex="1">
           <mxGeometry x="600" y="240" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qmBsTYbLXerOwTPvDhYZ-30" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;" parent="1" source="qmBsTYbLXerOwTPvDhYZ-15" edge="1">
@@ -525,12 +525,12 @@
         <mxCell id="qmBsTYbLXerOwTPvDhYZ-144" value="Spēlētāji" style="html=1;dashed=0;whiteSpace=wrap;shape=partialRectangle;right=0;left=0;fontFamily=Helvetica;fontSize=11;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="1330" y="1350" width="100" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="fphL6985dZf67btBnKnD-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="fphL6985dZf67btBnKnD-1">
+        <mxCell id="fphL6985dZf67btBnKnD-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="fphL6985dZf67btBnKnD-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="380" y="160" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fphL6985dZf67btBnKnD-1" value="Piedalīties spēlē" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="fphL6985dZf67btBnKnD-1" value="Piedalīties spēlē" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="400" y="240" width="120" height="40" as="geometry" />
         </mxCell>
       </root>
