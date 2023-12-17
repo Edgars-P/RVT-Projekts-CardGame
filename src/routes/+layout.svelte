@@ -5,7 +5,7 @@
 	import AccountButton from './AccountButton.svelte';
 	import { account } from '$lib/account';
 
-	import { Accordion, AppBar, AppShell, Toast } from '@skeletonlabs/skeleton';
+	import { Accordion, AppBar, AppShell, Modal, Toast } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
 
 	// Nepieciešams "toast" komponentam
@@ -19,6 +19,11 @@
 	"Toast" ziņu pamatobjekts kas tiek izmantots lai parādītu ziņojumus lietotājam. 
 -->
 <Toast position="tr" />
+
+<!--
+	"Modal" komponents kas tiek izmantots lai parādītu modālo logu.
+-->
+<Modal />
 
 <!--
 	Galvenais lapas izkārtojums.

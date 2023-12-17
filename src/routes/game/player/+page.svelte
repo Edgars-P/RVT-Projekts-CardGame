@@ -8,6 +8,7 @@
 	import type { RecordModel } from 'pocketbase';
 	import { derived } from 'svelte/store';
 	import GameCard from '$lib/components/GameCard.svelte';
+	import { createCurrentGameMovesStore, createGameMoveStore } from '../host/gameMoves';
 
 	const gameId = $page.url.searchParams.get('id') as string;
 	const secret = $page.url.searchParams.get('secret') as string;
@@ -17,6 +18,7 @@
 	}
 
 	let playerRecord = $playerPb?.authStore.model;
+	console.log('playerRecord', playerRecord);
 
 	/*
 		Uzreiz kad spēlētājs pievienojas spēlei tam tiek prasīts vārds.
@@ -24,17 +26,7 @@
 		Tas neizdosies ja viens vai otrs ir nepareizi.
 	*/
 	onMount(async () => {
-		$playerPb?.authStore.clear();
-
 		if (playerRecord && playerRecord.game == gameId) {
-			//Vēlreiz pieraktās lai atjauninātu sesiju
-			await $playerPb
-				?.collection('speletaji')
-				.authWithPassword(
-					localStorage.getItem('player_user') as string,
-					localStorage.getItem('player_pass') as string
-				);
-
 			return;
 		}
 
@@ -84,6 +76,48 @@
 		},
 		undefined as undefined | RecordModel
 	);
+
+	const gamePlayers = derived(
+		playerPb,
+		($pb, set, update) => {
+			if (!$pb) return;
+			$pb
+				.collection('speletaji')
+				.getFullList({
+					filter: `game = "${gameId}"`
+				})
+				.then((gamePlayers) => {
+					set(gamePlayers);
+				});
+
+			$pb?.collection('speletaji').subscribe('*', function (e) {
+				if (e.record.game != gameId) return;
+
+				switch (e.action) {
+					case 'create':
+						update((players) => [...players, e.record]);
+						break;
+					case 'update':
+						update((players) => {
+							const index = players.findIndex((player) => player.id == e.record.id);
+							players[index] = e.record;
+							return players;
+						});
+						break;
+					case 'delete':
+						update((players) => {
+							const index = players.findIndex((player) => player.id == e.record.id);
+							players.splice(index, 1);
+							return players;
+						});
+						break;
+				}
+			});
+		},
+		[] as RecordModel[]
+	);
+
+	let gameMoves = createCurrentGameMovesStore(gameId, gamePlayers, playerPb);
 </script>
 
 <h1 class="h1">Spēlētāja skats</h1>
@@ -92,14 +126,19 @@
 	Pievienots spēlei ar vārdu {playerRecord.name}!
 
 	<hr />
-
-	Jautājuma kārts:
-	{#if $gameRecord?.jautajumaKarts}
-		<GameCard card={$gameRecord?.jautajumaKarts} />
-	{/if}
+	<p>
+		<b>Jautājuma kārts:</b>
+		{#if $gameMoves[0]}
+			<GameCard card={$gameMoves[0].expand?.card} />
+		{/if}
+	</p>
 
 	<hr />
 	{#if $gameRecord?.karsuKomplekti}
-		<CardSelect gameCardSets={$gameRecord?.karsuKomplekti} />
+		{#if $gameMoves.every((move) => move.player !== playerRecord?.id)}
+			<CardSelect gameCardSets={$gameRecord?.karsuKomplekti} gameMoves={$gameMoves} />
+		{:else}
+			<p>Spēles kārts ir izspēlēta!</p>
+		{/if}
 	{/if}
 {/if}

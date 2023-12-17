@@ -1,11 +1,14 @@
 <script lang="ts">
+	import NewQuestionCard from './NewQuestionCard.svelte';
+
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { pb } from '$lib/database';
 	import type { RecordModel } from 'pocketbase';
 	import { derived, readable } from 'svelte/store';
-	import { createGameMoveStore } from './gameMoves';
+	import { createCurrentGameMovesStore, createGameMoveStore } from './gameMoves';
 	import GameCard from '$lib/components/GameCard.svelte';
+	import CardSelect from './CardSelect.svelte';
 
 	const gameId = $page.url.searchParams.get('id') as string;
 
@@ -36,16 +39,60 @@
 		undefined as undefined | RecordModel
 	);
 
-	const gameMoves = createGameMoveStore(gameId);
+	const gamePlayers = derived(
+		pb,
+		($pb, set, update) => {
+			if (!$pb) return;
 
-	const gameBoard = derived(gameMoves, ($gameMoves) => {
-		// Visas atbildes kārtis kopš pēdējās jautājuma kārtis
+			$pb
+				.collection('speletaji')
+				.getFullList({
+					filter: `game = "${gameId}"`
+				})
+				.then((gamePlayers) => {
+					set(gamePlayers);
 
-		const lastQuestionCardIndex = $gameMoves?.findIndex((move) => move.card.type === 'question');
-	});
+					$pb?.collection('speletaji').subscribe('*', function (e) {
+						if (e.record.game != gameId) return;
+
+						switch (e.action) {
+							case 'create':
+								update((players) => [...players, e.record]);
+								break;
+							case 'update':
+								update((players) => {
+									const index = players.findIndex((player) => player.id == e.record.id);
+									players[index] = e.record;
+									return players;
+								});
+								break;
+							case 'delete':
+								update((players) => {
+									const index = players.findIndex((player) => player.id == e.record.id);
+									players.splice(index, 1);
+									return players;
+								});
+								break;
+						}
+					});
+				});
+		},
+		[] as RecordModel[]
+	);
+
+	const gameMoves = createCurrentGameMovesStore(gameId, gamePlayers, pb);
+
+	let selectNewQuestionCard = false;
 </script>
 
 <h1 class="h1">Spēles vadītāja skats</h1>
+
+{#if selectNewQuestionCard}
+	<!--
+	Izveido popup logu kurā tiek parādītas visas kārtis no izvēlētājiem komplektiem.
+-->
+	<NewQuestionCard {gameRecord} {gameMoves} bind:selectNewQuestionCard></NewQuestionCard>
+{/if}
 
 {#if $gameRecord}
 	<p>
@@ -56,9 +103,42 @@
 		</a>
 	</p>
 
+	<hr />
+
+	<p>
+		Spēlētāji:
+		{#each $gamePlayers ?? [] as player}
+			<div class="chip variant-filled m-1 px-5">
+				{player.name}
+			</div>
+		{/each}
+	</p>
+
+	<hr />
+
 	<p>
 		<b>Jautājuma kārts:</b>
-		{JSON.stringify($gameRecord.expand?.jautajumaKarts)}
+		{#if $gameMoves[0]}
+			<GameCard card={$gameMoves[0].expand?.card}>
+				<button
+					class="btn variant-filled-primary"
+					on:click={() => {
+						selectNewQuestionCard = true;
+					}}
+				>
+					Jauna kārts
+				</button>
+			</GameCard>
+		{:else}
+			<button
+				class="btn variant-filled-primary"
+				on:click={() => {
+					selectNewQuestionCard = true;
+				}}
+			>
+				Jauna kārts
+			</button>
+		{/if}
 	</p>
 
 	<hr />
@@ -68,8 +148,14 @@
 	<h1 class="h3">Spēles gājieni</h1>
 
 	<div class="flex flex-row flex-wrap">
-		{#each $gameMoves ?? [] as move}
-			<GameCard card={move.card} />
+		{#each $gameMoves.splice(1) ?? [] as move}
+			<GameCard card={move.card}>
+				<div
+					class="chip variant-filled m-1 absolute top-0 right-1/2 translate-x-1/2 -translate-y-4"
+				>
+					{move.expand?.player?.name}
+				</div>
+			</GameCard>
 		{/each}
 	</div>
 {/if}

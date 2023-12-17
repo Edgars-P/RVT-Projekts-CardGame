@@ -10,6 +10,7 @@
 
 	export let gameCardSets: string[];
 	export let gameMoves: RecordModel[];
+	export let selectNewQuestionCard: boolean;
 
 	console.log(gameCardSets);
 
@@ -17,7 +18,7 @@
 		$playerPb
 			?.collection('spelesKartis')
 			.getFullList({
-				filter: `tips = "atbilzu" && ( ${gameCardSets
+				filter: `tips = "jautajuma" && ( ${gameCardSets
 					.map((cardSet) => `karsuKomplekts = "${cardSet}"`)
 					.join(' || ')} )`
 			})
@@ -28,8 +29,6 @@
 </script>
 
 <div class="wrap">
-	<h1 class="h1">Izvēlies kārti kuru izspēlēt</h1>
-
 	<div class="flex flex-wrap">
 		{#each $cards as card}
 			<GameCard card={card.id}>
@@ -48,6 +47,7 @@
 									message: 'Kārts izspēlēta!',
 									background: 'variant-filled-success'
 								});
+								selectNewQuestionCard = false;
 							});
 					}}
 				>
