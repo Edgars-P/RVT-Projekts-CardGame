@@ -5,7 +5,7 @@ let
 	# get pocketbase from github release archive
 	newPocketbase = pkgs.buildGoModule rec {
 		name = "pocketbase";
-		version = "v0.20.0";
+		version = "v0.20.1";
 
 		src = pkgs.fetchFromGitHub {
 			owner = "pocketbase";
