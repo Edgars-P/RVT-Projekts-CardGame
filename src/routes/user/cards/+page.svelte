@@ -3,6 +3,7 @@
 	import { pb } from '$lib/database';
 	import type { RecordModel } from 'pocketbase';
 	import { writable } from 'svelte/store';
+	import { faker } from '@faker-js/faker';
 
 	const cards = writable([] as RecordModel[], (set) => {
 		$pb
@@ -23,6 +24,21 @@
 				set(cardSet);
 			});
 	});
+
+	async function generateExampleCards() {
+		for (let i = 0; i < 20; i++) {
+			const tips = i % 2 === 0 ? 'jautajuma' : 'atbilzu';
+
+			const card = {
+				virsraksts: `Kārts ${tips} ${i}`,
+				saturs: faker.lorem.sentence(),
+				karsuKomplekts: $page.url.searchParams.get('cardSet'),
+				tips: tips,
+				custom: '{}'
+			};
+			await $pb?.collection('spelesKartis').create(card);
+		}
+	}
 </script>
 
 <div class="card mx-5 my-3 p-3">
@@ -78,6 +94,15 @@
 	{:else}
 		<div class="card p-3 my-3">
 			<div class="content text-center">Komplektā kāršu nav!</div>
+			<button
+				on:click={async () => {
+					await generateExampleCards();
+					location.reload();
+				}}
+				class="btn variant-filled-primary block mx-auto mt-3"
+			>
+				Izveidot piemēra kārtis
+			</button>
 		</div>
 	{/each}
 </div>

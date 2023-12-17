@@ -50,7 +50,10 @@
 {#if $gameRecord}
 	<p>
 		<br />
-		<b>Pievienojies šai spēlei</b>: https://example.com/game/player?id={gameId}&secret={$gameRecord?.secret}
+		<b>Pievienojies šai spēlei</b>:
+		<a href="/game/player?id={gameId}&secret={$gameRecord?.secret}" target="_blank">
+			https://example.com/game/player?id={gameId}&secret={$gameRecord?.secret}
+		</a>
 	</p>
 
 	<p>
@@ -69,17 +72,4 @@
 			<GameCard card={move.card} />
 		{/each}
 	</div>
-
-	<button
-		class="btn variant-filled variant-filled-primary"
-		on:click={() => {
-			const data = {
-				player: '1yvx62nbhqbmelt',
-				game: gameId,
-				card: 'o1uecs779949rfp'
-			};
-
-			$pb?.collection('spelesGajieni').create(data);
-		}}>Veikt gājienu</button
-	>
 {/if}

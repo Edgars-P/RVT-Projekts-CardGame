@@ -4,10 +4,13 @@
 	import LogInButton from './LogInButton.svelte';
 	import AccountButton from './AccountButton.svelte';
 	import { account } from '$lib/account';
-	import { SvelteToast } from '@zerodevx/svelte-toast';
 
-	import { Accordion, AppBar, AppShell } from '@skeletonlabs/skeleton';
+	import { Accordion, AppBar, AppShell, Toast } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
+
+	// Nepieciešams "toast" komponentam
+	import { initializeStores } from '@skeletonlabs/skeleton';
+	initializeStores();
 
 	$: console.log(JSON.stringify($page.url.pathname.length));
 </script>
@@ -15,12 +18,7 @@
 <!--
 	"Toast" ziņu pamatobjekts kas tiek izmantots lai parādītu ziņojumus lietotājam. 
 -->
-<SvelteToast
-	options={{
-		reversed: true,
-		intro: { y: 192 }
-	}}
-/>
+<Toast position="tr" />
 
 <!--
 	Galvenais lapas izkārtojums.

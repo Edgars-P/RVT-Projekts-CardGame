@@ -20,17 +20,13 @@ export function createGameMoveStore(gameId: string) {
 						set(r);
 
 						// subscribe to all speluGajieni creation events that have the game id we are interested in
-						$pb.collection('spelesGajieni').subscribe(
-							'*',
-							(event) => {
-								console.log('gamemoves rt', event);
-								if (event.action === 'create' && event.record.game == gameId) {
-									moves = [...moves, event.record];
-									set(moves);
-								}
-							},
-							{}
-						);
+						$pb.collection('spelesGajieni').subscribe('*', (event) => {
+							console.log('gamemoves rt', event);
+							if (event.action === 'create' && event.record.game == gameId) {
+								moves = [...moves, event.record];
+								set(moves);
+							}
+						});
 					});
 			}
 			return undefined;

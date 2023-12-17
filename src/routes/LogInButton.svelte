@@ -1,9 +1,11 @@
 <script>
 	import { pb } from '$lib/database';
 	import { createPopover, createTabs, melt } from '@melt-ui/svelte';
-	import { Tab, TabGroup } from '@skeletonlabs/skeleton';
-	import { toast } from '@zerodevx/svelte-toast';
+	import { Tab, TabGroup, getToastStore } from '@skeletonlabs/skeleton';
+
 	import { fade, slide } from 'svelte/transition';
+
+	const toast = getToastStore();
 
 	const tabs = [
 		{ id: 'login', label: 'Ienākt' },
@@ -93,7 +95,10 @@
 									})
 									.catch((err) => {
 										console.log(err);
-										toast.push('Nepareizs lietotājvārds vai parole!');
+										toast.trigger({
+											message: 'Nepareizs lietotājvārds vai parole!',
+											background: 'variant-filled-warning'
+										});
 									});
 						}}
 					>
