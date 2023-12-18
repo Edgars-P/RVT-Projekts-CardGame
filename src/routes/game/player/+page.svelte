@@ -53,7 +53,7 @@
 		localStorage.setItem('player_user', username);
 		localStorage.setItem('player_pass', password);
 
-		playerRecord = $playerPb?.authStore.model;
+		location.reload();
 	});
 
 	const gameRecord = derived(
