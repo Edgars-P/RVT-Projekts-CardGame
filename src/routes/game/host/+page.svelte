@@ -91,7 +91,7 @@
 	<!--
 	Izveido popup logu kurā tiek parādītas visas kārtis no izvēlētājiem komplektiem.
 -->
-	<NewQuestionCard {gameRecord} {gameMoves} bind:selectNewQuestionCard></NewQuestionCard>
+	<NewQuestionCard {gameRecord} {gameMoves} bind:selectNewQuestionCard {gameId}></NewQuestionCard>
 {/if}
 
 {#if $gameRecord}

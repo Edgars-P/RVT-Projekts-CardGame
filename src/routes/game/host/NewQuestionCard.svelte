@@ -11,6 +11,7 @@
 	export let gameRecord: Readable<RecordModel>;
 	export let gameMoves: Readable<RecordModel[]>;
 	export let selectNewQuestionCard: boolean;
+	export let gameId: string;
 </script>
 
 <div class="absolute inset-0 bg-surface-100 bg-opacity-75 z-50" style="display: block;">
@@ -26,6 +27,7 @@
 					gameCardSets={$gameRecord?.karsuKomplekti}
 					gameMoves={$gameMoves}
 					bind:selectNewQuestionCard
+					{gameId}
 				/>
 			</div>
 		</div>
