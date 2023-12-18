@@ -127,6 +127,17 @@
 						class="btn variant-filled block mt-3 mx-auto"
 						on:click={() => {
 							/*
+								Pārbauda vai paroles sakrīt.
+							*/
+							if (input.password != input.confirmPassword) {
+								toast.trigger({
+									message: 'Paroles nesakrīt!',
+									background: 'variant-filled-warning'
+								});
+								return;
+							}
+
+							/*
 								Izveido lietotāju ar ievadīto lietotājvārdu un paroli.
 								Ja tas izdodas, tad atjauno lapu.
 							*/
@@ -148,6 +159,10 @@
 									})
 									.catch((err) => {
 										console.log(err.data.data);
+										toast.trigger({
+											message: 'Reģistrācija neizdevās!',
+											background: 'variant-filled-warning'
+										});
 									});
 						}}
 					>
