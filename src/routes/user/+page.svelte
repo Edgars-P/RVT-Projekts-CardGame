@@ -10,7 +10,9 @@
 	let tabSet = parseInt($page.url.searchParams.get('tab') ?? '') || 0;
 	$: {
 		$page.url.searchParams.set('tab', tabSet.toString());
-		goto(`?${$page.url.searchParams.toString()}`);
+		goto(`?${$page.url.searchParams.toString()}`, {
+			replaceState: true
+		});
 	}
 </script>
 

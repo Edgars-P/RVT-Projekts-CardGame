@@ -32,14 +32,14 @@
 			<span class="content">
 				<ul>
 					<li>
-						Spēles noteikumi: {#each game.noteikumi as noteikums}
+						Spēles noteikumi: {#each game.noteikumi ?? [] as noteikums}
 							<span class="chip variant-filled m-1">
 								{noteikums}
 							</span>
 						{/each}
 					</li>
 					<li>
-						Kāršu komplekti: {#each game.expand?.karsuKomplekti.map((x) => x.name) as cardSetName}
+						Kāršu komplekti: {#each game.expand?.karsuKomplekti.map((x) => x.name) ?? [] as cardSetName}
 							<span class="chip variant-filled m-1">{cardSetName}</span>
 						{/each}
 					</li>
