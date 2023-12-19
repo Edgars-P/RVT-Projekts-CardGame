@@ -1,5 +1,5 @@
 <script>
-	import { faker } from '@faker-js/faker';
+	import { faker } from "@faker-js/faker"
 </script>
 
 <div class="card m-5 max-w-3xl mx-auto">

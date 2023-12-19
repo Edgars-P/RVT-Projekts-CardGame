@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
-	import { pb } from '$lib/database';
-	import type { RecordModel } from 'pocketbase';
-	import { derived, readable, type Readable } from 'svelte/store';
-	import { createCurrentGameMovesStore, createGameMoveStore } from './gameMoves';
-	import GameCard from '$lib/components/GameCard.svelte';
-	import CardSelect from './CardSelect.svelte';
+	import { browser } from "$app/environment"
+	import { page } from "$app/stores"
+	import { pb } from "$lib/database"
+	import type { RecordModel } from "pocketbase"
+	import { derived, readable, type Readable } from "svelte/store"
+	import { createCurrentGameMovesStore, createGameMoveStore } from "./gameMoves"
+	import GameCard from "$lib/components/GameCard.svelte"
+	import CardSelect from "./CardSelect.svelte"
 
-	export let gameRecord: Readable<RecordModel>;
-	export let gameMoves: Readable<RecordModel[]>;
-	export let selectNewQuestionCard: boolean;
-	export let gameId: string;
+	export let gameRecord: Readable<RecordModel>
+	export let gameMoves: Readable<RecordModel[]>
+	export let selectNewQuestionCard: boolean
+	export let gameId: string
 </script>
 
 <div class="absolute inset-0 bg-surface-100 bg-opacity-75 z-50" style="display: block;">

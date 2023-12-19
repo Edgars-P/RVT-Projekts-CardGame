@@ -1,25 +1,25 @@
 <script lang="ts">
-	import { account } from '$lib/account';
-	import { pb } from '$lib/database';
-	import { readable, writable } from 'svelte/store';
-	import type { RecordModel } from 'pocketbase';
+	import { account } from "$lib/account"
+	import { pb } from "$lib/database"
+	import { readable, writable } from "svelte/store"
+	import type { RecordModel } from "pocketbase"
 
 	// Izveido un pārvalda kāršu komplektus
 
 	const myCardSets = writable([] as RecordModel[], (set) => {
 		// Ielādē lietotāja izveidotos kāršu komplektus
 		$pb
-			?.collection('karsuKomplekti')
+			?.collection("karsuKomplekti")
 			.getFullList({ filter: `creator = "${$account?.id}"` })
 			.then((cardSets) => {
-				set(cardSets);
-			});
-	});
+				set(cardSets)
+			})
+	})
 
 	async function createCardSet(name: string, description: string) {
 		// Izveido jaunu kāršu komplektu
 		const cardSet = await $pb
-			?.collection('karsuKomplekti')
+			?.collection("karsuKomplekti")
 			.create({
 				name,
 				description,
@@ -27,10 +27,10 @@
 			})
 			.then((newCardSet) => {
 				// Atjauno kāršu komplektu sarakstu
-				myCardSets.update((cardSets) => [...cardSets, newCardSet]);
-			});
+				myCardSets.update((cardSets) => [...cardSets, newCardSet])
+			})
 
-		return cardSet;
+		return cardSet
 	}
 </script>
 
@@ -50,11 +50,11 @@
 					class="btn btn-sm variant-filled-error"
 					on:click={() => {
 						$pb
-							?.collection('karsuKomplekti')
+							?.collection("karsuKomplekti")
 							.delete(cardSet.id)
 							.then(() => {
-								myCardSets.update((cardSets) => cardSets.filter((c) => c.id !== cardSet.id));
-							});
+								myCardSets.update((cardSets) => cardSets.filter((c) => c.id !== cardSet.id))
+							})
 					}}
 				>
 					Dzēst
@@ -68,13 +68,13 @@
 		<div class="content">
 			<form
 				on:submit={async (e) => {
-					e.preventDefault();
-					const form = e.currentTarget;
-					const formData = new FormData(form);
-					const data = Object.fromEntries(formData.entries());
+					e.preventDefault()
+					const form = e.currentTarget
+					const formData = new FormData(form)
+					const data = Object.fromEntries(formData.entries())
 					await createCardSet(data.name.toString(), data.description.toString()).then(() => {
-						form.reset();
-					});
+						form.reset()
+					})
 				}}
 			>
 				<div>

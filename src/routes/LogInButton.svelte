@@ -1,41 +1,41 @@
 <script>
-	import { pb } from '$lib/database';
-	import { createPopover, createTabs, melt } from '@melt-ui/svelte';
-	import { Tab, TabGroup, getToastStore } from '@skeletonlabs/skeleton';
+	import { pb } from "$lib/database"
+	import { createPopover, createTabs, melt } from "@melt-ui/svelte"
+	import { Tab, TabGroup, getToastStore } from "@skeletonlabs/skeleton"
 
-	import { fade, slide } from 'svelte/transition';
+	import { fade, slide } from "svelte/transition"
 
-	const toast = getToastStore();
+	const toast = getToastStore()
 
 	const tabs = [
-		{ id: 'login', label: 'Ienākt' },
-		{ id: 'register', label: 'Reģistrēties' }
-	];
+		{ id: "login", label: "Ienākt" },
+		{ id: "register", label: "Reģistrēties" }
+	]
 
-	let currentTab = 'login';
+	let currentTab = "login"
 
 	const {
 		elements: { trigger: pTrigger, content: pContent, arrow, close },
 		states: { open }
 	} = createPopover({
 		forceVisible: true
-	});
+	})
 
 	const {
 		elements: { root, list, content: tContent, trigger: tTrigger },
 		states: { value }
 	} = createTabs({
-		defaultValue: 'login'
-	});
+		defaultValue: "login"
+	})
 
 	/*
 		Ievaddati tiek saglabāti lai pārslēdot uz reģistrācijas formu tie nepazūd.
 	*/
 	let input = {
-		username: '',
-		password: '',
-		confirmPassword: ''
-	};
+		username: "",
+		password: "",
+		confirmPassword: ""
+	}
 </script>
 
 <!--
@@ -65,7 +65,7 @@
 		</div>
 
 		<div class="content p-3">
-			{#if currentTab == 'login'}
+			{#if currentTab == "login"}
 				<!--
 					Pierakstīšanās forma.
 				-->
@@ -88,24 +88,24 @@
 							*/
 							$pb &&
 								$pb
-									.collection('lietotaji')
+									.collection("lietotaji")
 									.authWithPassword(input.username, input.password)
 									.then((x) => {
-										location.reload();
+										location.reload()
 									})
 									.catch((err) => {
-										console.log(err);
+										console.log(err)
 										toast.trigger({
-											message: 'Nepareizs lietotājvārds vai parole!',
-											background: 'variant-filled-warning'
-										});
-									});
+											message: "Nepareizs lietotājvārds vai parole!",
+											background: "variant-filled-warning"
+										})
+									})
 						}}
 					>
 						Ienākt
 					</button>
 				</form>
-			{:else if currentTab == 'register'}
+			{:else if currentTab == "register"}
 				<!--
 					Reģistrācijas forma.
 				-->
@@ -131,10 +131,10 @@
 							*/
 							if (input.password != input.confirmPassword) {
 								toast.trigger({
-									message: 'Paroles nesakrīt!',
-									background: 'variant-filled-warning'
-								});
-								return;
+									message: "Paroles nesakrīt!",
+									background: "variant-filled-warning"
+								})
+								return
 							}
 
 							/*
@@ -143,27 +143,27 @@
 							*/
 							$pb &&
 								$pb
-									.collection('lietotaji')
+									.collection("lietotaji")
 									.create({
 										name: input.username,
-										email: Math.random().toString(36).substring(2, 15) + '@example.com',
+										email: Math.random().toString(36).substring(2, 15) + "@example.com",
 										username: input.username,
 										password: input.password,
 										passwordConfirm: input.confirmPassword
 									})
 									.then((x) => {
 										alert(
-											'Reģistrācija izdevās! Lūdams pierakstīties ar Jūsu lietotājvārdu un paroli.'
-										);
-										location.reload();
+											"Reģistrācija izdevās! Lūdams pierakstīties ar Jūsu lietotājvārdu un paroli."
+										)
+										location.reload()
 									})
 									.catch((err) => {
-										console.log(err.data.data);
+										console.log(err.data.data)
 										toast.trigger({
-											message: 'Reģistrācija neizdevās!',
-											background: 'variant-filled-warning'
-										});
-									});
+											message: "Reģistrācija neizdevās!",
+											background: "variant-filled-warning"
+										})
+									})
 						}}
 					>
 						Reģistrēties

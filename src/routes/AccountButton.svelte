@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { account } from '$lib/account';
-	import { pb } from '$lib/database';
-	import { createPopover, melt } from '@melt-ui/svelte';
-	import { Avatar } from '@skeletonlabs/skeleton';
+	import { account } from "$lib/account"
+	import { pb } from "$lib/database"
+	import { createPopover, melt } from "@melt-ui/svelte"
+	import { Avatar } from "@skeletonlabs/skeleton"
 
 	const {
 		elements: { trigger: pTrigger, content: pContent, arrow, close },
 		states: { open }
 	} = createPopover({
 		forceVisible: true
-	});
+	})
 </script>
 
 <ul>
@@ -44,8 +44,8 @@
 							<button
 								class="btn variant-filled-error"
 								on:click={() => {
-									$pb && $pb.authStore.clear();
-									location.reload();
+									$pb && $pb.authStore.clear()
+									location.reload()
 								}}
 							>
 								Izrakstīties

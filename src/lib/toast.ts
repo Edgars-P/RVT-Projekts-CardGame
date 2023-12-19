@@ -1,3 +1,3 @@
-import { getToastStore } from '@skeletonlabs/skeleton';
+import { getToastStore } from "@skeletonlabs/skeleton"
 
-export let toast = getToastStore();
+export let toast = getToastStore()

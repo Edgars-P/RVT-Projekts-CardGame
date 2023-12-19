@@ -1,18 +1,18 @@
 <script>
-	import '../app.postcss';
+	import "../app.postcss"
 
-	import LogInButton from './LogInButton.svelte';
-	import AccountButton from './AccountButton.svelte';
-	import { account } from '$lib/account';
+	import LogInButton from "./LogInButton.svelte"
+	import AccountButton from "./AccountButton.svelte"
+	import { account } from "$lib/account"
 
-	import { Accordion, AppBar, AppShell, Modal, Toast } from '@skeletonlabs/skeleton';
-	import { page } from '$app/stores';
+	import { Accordion, AppBar, AppShell, Modal, Toast } from "@skeletonlabs/skeleton"
+	import { page } from "$app/stores"
 
 	// Nepieciešams "toast" komponentam
-	import { initializeStores } from '@skeletonlabs/skeleton';
-	initializeStores();
+	import { initializeStores } from "@skeletonlabs/skeleton"
+	initializeStores()
 
-	$: console.log(JSON.stringify($page.url.pathname.length));
+	$: console.log(JSON.stringify($page.url.pathname.length))
 </script>
 
 <!--

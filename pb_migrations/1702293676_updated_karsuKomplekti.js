@@ -1,17 +1,20 @@
-migrate((db) => {
-  const dao = new Dao(db)
-  const collection = dao.findCollectionByNameOrId("jujjbq0fubmtwqr")
+migrate(
+	(db) => {
+		const dao = new Dao(db)
+		const collection = dao.findCollectionByNameOrId("jujjbq0fubmtwqr")
 
-  collection.updateRule = "@request.auth.id = creator.id"
-  collection.deleteRule = "@request.auth.id = creator.id"
+		collection.updateRule = "@request.auth.id = creator.id"
+		collection.deleteRule = "@request.auth.id = creator.id"
 
-  return dao.saveCollection(collection)
-}, (db) => {
-  const dao = new Dao(db)
-  const collection = dao.findCollectionByNameOrId("jujjbq0fubmtwqr")
+		return dao.saveCollection(collection)
+	},
+	(db) => {
+		const dao = new Dao(db)
+		const collection = dao.findCollectionByNameOrId("jujjbq0fubmtwqr")
 
-  collection.updateRule = null
-  collection.deleteRule = null
+		collection.updateRule = null
+		collection.deleteRule = null
 
-  return dao.saveCollection(collection)
-})
+		return dao.saveCollection(collection)
+	}
+)

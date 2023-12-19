@@ -1,32 +1,32 @@
 <script lang="ts">
-	import GameCard from '$lib/components/GameCard.svelte';
-	import { getToastStore } from '@skeletonlabs/skeleton';
-	import type { RecordModel } from 'pocketbase';
-	import { writable } from 'svelte/store';
-	import { createGameMoveStore } from '../host/gameMoves';
-	import { pb } from '$lib/database';
+	import GameCard from "$lib/components/GameCard.svelte"
+	import { getToastStore } from "@skeletonlabs/skeleton"
+	import type { RecordModel } from "pocketbase"
+	import { writable } from "svelte/store"
+	import { createGameMoveStore } from "../host/gameMoves"
+	import { pb } from "$lib/database"
 
-	const toast = getToastStore();
+	const toast = getToastStore()
 
-	export let gameCardSets: string[];
-	export let gameMoves: RecordModel[];
-	export let selectNewQuestionCard: boolean;
-	export let gameId: string;
+	export let gameCardSets: string[]
+	export let gameMoves: RecordModel[]
+	export let selectNewQuestionCard: boolean
+	export let gameId: string
 
-	console.log(gameCardSets);
+	console.log(gameCardSets)
 
 	const cards = writable([] as RecordModel[], (set) => {
 		$pb
-			?.collection('spelesKartis')
+			?.collection("spelesKartis")
 			.getFullList({
 				filter: `tips = "jautajuma" && ( ${gameCardSets
 					.map((cardSet) => `karsuKomplekts = "${cardSet}"`)
-					.join(' || ')} )`
+					.join(" || ")} )`
 			})
 			.then((cardSets) => {
-				set(cardSets);
-			});
-	});
+				set(cardSets)
+			})
+	})
 </script>
 
 <div class="wrap">
@@ -37,7 +37,7 @@
 					class="btn variant-filled-primary"
 					on:click={() => {
 						$pb
-							?.collection('spelesGajieni')
+							?.collection("spelesGajieni")
 							.create({
 								player: undefined,
 								game: gameId,
@@ -45,11 +45,11 @@
 							})
 							.then(() => {
 								toast.trigger({
-									message: 'Kārts izspēlēta!',
-									background: 'variant-filled-success'
-								});
-								selectNewQuestionCard = false;
-							});
+									message: "Kārts izspēlēta!",
+									background: "variant-filled-success"
+								})
+								selectNewQuestionCard = false
+							})
 					}}
 				>
 					Izspēlēt

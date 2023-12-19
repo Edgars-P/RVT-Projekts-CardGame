@@ -1,35 +1,35 @@
 <script lang="ts">
-	import { goto, invalidateAll } from '$app/navigation';
-	import { page } from '$app/stores';
-	import { adminPb } from '$lib/database';
-	import { Tab, TabGroup, Table, tableMapperValues } from '@skeletonlabs/skeleton';
-	import type { RecordModel } from 'pocketbase';
-	import { fade, fly } from 'svelte/transition';
+	import { goto, invalidateAll } from "$app/navigation"
+	import { page } from "$app/stores"
+	import { adminPb } from "$lib/database"
+	import { Tab, TabGroup, Table, tableMapperValues } from "@skeletonlabs/skeleton"
+	import type { RecordModel } from "pocketbase"
+	import { fade, fly } from "svelte/transition"
 
 	/*
 		Tabu navigācijas mainīgie
 		TabSet nosaka kuru tabu parādīt
 		Filter nosaka kādu filtru lietot tabu saturam
 	*/
-	let tabSet = parseInt($page.url.searchParams.get('tab') ?? '') || 0;
-	let filter = $page.url.searchParams.get('filter') as string | undefined;
+	let tabSet = parseInt($page.url.searchParams.get("tab") ?? "") || 0
+	let filter = $page.url.searchParams.get("filter") as string | undefined
 
 	$: {
 		/*
 			Atjaunojam lapas URL ja mainīgie mainās, lai pēc lapas atjaunošanas
 			parādītu to pašu saturu.
 		*/
-		$page.url.searchParams.set('tab', tabSet.toString());
+		$page.url.searchParams.set("tab", tabSet.toString())
 		filter
-			? $page.url.searchParams.set('filter', filter.toString())
-			: $page.url.searchParams.delete('filter');
+			? $page.url.searchParams.set("filter", filter.toString())
+			: $page.url.searchParams.delete("filter")
 		goto(`?${$page.url.searchParams.toString()}`, {
 			replaceState: true
-		});
-		selectedItemId = undefined;
+		})
+		selectedItemId = undefined
 	}
 
-	let selectedItemId: string | undefined;
+	let selectedItemId: string | undefined
 </script>
 
 <!--
@@ -42,8 +42,8 @@
 	<button
 		class="btn btn-primary variant-filled-primary"
 		on:click={() => {
-			$adminPb?.authStore.clear();
-			location.reload();
+			$adminPb?.authStore.clear()
+			location.reload()
 		}}
 	>
 		Izrakstīties
@@ -65,7 +65,7 @@
 				<button
 					class="btn btn-primary variant-filled-primary"
 					on:click={() => {
-						filter = null;
+						filter = null
 					}}
 				>
 					Noņemt filtrus
@@ -73,96 +73,96 @@
 			{/if}
 
 			{#if tabSet == 0}
-				{#await $adminPb?.collection('lietotaji').getFullList({ filter })}
+				{#await $adminPb?.collection("lietotaji").getFullList({ filter })}
 					<p>Ielādē...</p>
 				{:then data}
 					<Table
 						interactive={true}
 						on:selected={(e) => {
-							selectedItemId = e.detail[0];
+							selectedItemId = e.detail[0]
 						}}
 						source={{
-							head: ['Lietotājvārds', 'Vārds', 'Izveidots', 'Pēdējās izmaiņas'],
-							body: tableMapperValues(data ?? [], ['username', 'name', 'created', 'updated']),
-							meta: tableMapperValues(data ?? [], ['id'])
+							head: ["Lietotājvārds", "Vārds", "Izveidots", "Pēdējās izmaiņas"],
+							body: tableMapperValues(data ?? [], ["username", "name", "created", "updated"]),
+							meta: tableMapperValues(data ?? [], ["id"])
 						}}
 					/>
 				{/await}
 			{:else if tabSet == 1}
-				{#await $adminPb?.collection('karsuKomplekti').getFullList({ filter })}
+				{#await $adminPb?.collection("karsuKomplekti").getFullList({ filter })}
 					<p>Ielādē...</p>
 				{:then data}
 					<Table
 						interactive={true}
 						on:selected={(e) => {
-							selectedItemId = e.detail[0];
+							selectedItemId = e.detail[0]
 						}}
 						source={{
 							head: [
-								'ID',
-								'Nosaukums',
-								'Oficiāls',
-								'Izveidotājs',
-								'Apraksts',
-								'Izveidots',
-								'Pēdējās izmaiņas'
+								"ID",
+								"Nosaukums",
+								"Oficiāls",
+								"Izveidotājs",
+								"Apraksts",
+								"Izveidots",
+								"Pēdējās izmaiņas"
 							],
 							body: tableMapperValues(data ?? [], [
-								'id',
-								'name',
-								'official',
-								'creator',
-								'description',
-								'created',
-								'updated'
+								"id",
+								"name",
+								"official",
+								"creator",
+								"description",
+								"created",
+								"updated"
 							]),
-							meta: tableMapperValues(data ?? [], ['id'])
+							meta: tableMapperValues(data ?? [], ["id"])
 						}}
 					/>
 				{/await}
 			{:else if tabSet == 2}
-				{#await $adminPb?.collection('spelesKartis').getFullList({ filter })}
+				{#await $adminPb?.collection("spelesKartis").getFullList({ filter })}
 					<p>Ielādē...</p>
 				{:then data}
 					<Table
 						interactive={true}
 						on:selected={(e) => {
-							selectedItemId = e.detail[0];
+							selectedItemId = e.detail[0]
 						}}
 						source={{
-							head: ['ID', 'Kāršu komplekts', 'Tips', 'Virsraksts', 'Saturs', 'Izveidots'],
+							head: ["ID", "Kāršu komplekts", "Tips", "Virsraksts", "Saturs", "Izveidots"],
 							body: tableMapperValues(data ?? [], [
-								'id',
-								'karsuKomplekts',
-								'tips',
-								'virsraksts',
-								'saturs',
-								'created'
+								"id",
+								"karsuKomplekts",
+								"tips",
+								"virsraksts",
+								"saturs",
+								"created"
 							]),
-							meta: tableMapperValues(data ?? [], ['id'])
+							meta: tableMapperValues(data ?? [], ["id"])
 						}}
 					/>
 				{/await}
 			{:else if tabSet == 3}
-				{#await $adminPb?.collection('speles').getFullList({ filter })}
+				{#await $adminPb?.collection("speles").getFullList({ filter })}
 					<p>Ielādē...</p>
 				{:then data}
 					<Table
 						interactive={true}
 						on:selected={(e) => {
-							selectedItemId = e.detail[0];
+							selectedItemId = e.detail[0]
 						}}
 						source={{
-							head: ['ID', 'Radītājs', 'Noslēpums', 'Noteikumi', 'Komplekti', 'Izveidots'],
+							head: ["ID", "Radītājs", "Noslēpums", "Noteikumi", "Komplekti", "Izveidots"],
 							body: tableMapperValues(data ?? [], [
-								'id',
-								'raditajs',
-								'secret',
-								'noteikumi',
-								'karsuKomplekti',
-								'created'
+								"id",
+								"raditajs",
+								"secret",
+								"noteikumi",
+								"karsuKomplekti",
+								"created"
 							]),
-							meta: tableMapperValues(data ?? [], ['id'])
+							meta: tableMapperValues(data ?? [], ["id"])
 						}}
 					/>
 				{/await}
@@ -182,10 +182,10 @@
 					class="btn btn-primary variant-filled-error"
 					on:click={() => {
 						$adminPb
-							?.collection(['lietotaji', 'karsuKomplekti', 'spelesKartis', 'speles'][tabSet])
-							.delete(selectedItemId ?? '');
-						selectedItemId = undefined;
-						location.reload();
+							?.collection(["lietotaji", "karsuKomplekti", "spelesKartis", "speles"][tabSet])
+							.delete(selectedItemId ?? "")
+						selectedItemId = undefined
+						location.reload()
 					}}
 				>
 					Dzēst
@@ -193,7 +193,7 @@
 				<button
 					class="btn btn-primary variant-filled"
 					on:click={() => {
-						selectedItemId = undefined;
+						selectedItemId = undefined
 					}}
 				>
 					Atcelt
@@ -207,8 +207,8 @@
 					<button
 						class="btn btn-primary variant-filled"
 						on:click={() => {
-							tabSet = 3;
-							filter = `raditajs = "${selectedItemId}"`;
+							tabSet = 3
+							filter = `raditajs = "${selectedItemId}"`
 						}}
 					>
 						Skatīt spēles
@@ -217,8 +217,8 @@
 					<button
 						class="btn btn-primary variant-filled"
 						on:click={() => {
-							tabSet = 2;
-							filter = `karsuKomplekts = "${selectedItemId}"`;
+							tabSet = 2
+							filter = `karsuKomplekts = "${selectedItemId}"`
 						}}
 					>
 						Skatīt kārtis komplektā

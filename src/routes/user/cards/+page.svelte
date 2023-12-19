@@ -1,42 +1,42 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { pb } from '$lib/database';
-	import type { RecordModel } from 'pocketbase';
-	import { writable } from 'svelte/store';
-	import { faker } from '@faker-js/faker';
+	import { page } from "$app/stores"
+	import { pb } from "$lib/database"
+	import type { RecordModel } from "pocketbase"
+	import { writable } from "svelte/store"
+	import { faker } from "@faker-js/faker"
 
 	const cards = writable([] as RecordModel[], (set) => {
 		$pb
-			?.collection('spelesKartis')
+			?.collection("spelesKartis")
 			.getFullList({
-				filter: `karsuKomplekts = "${$page.url.searchParams.get('cardSet')}"`
+				filter: `karsuKomplekts = "${$page.url.searchParams.get("cardSet")}"`
 			})
 			.then((cardSets) => {
-				set(cardSets);
-			});
-	});
+				set(cardSets)
+			})
+	})
 
 	const cardSet = writable({} as RecordModel, (set) => {
 		$pb
-			?.collection('karsuKomplekti')
-			.getOne($page.url.searchParams.get('cardSet') ?? '')
+			?.collection("karsuKomplekti")
+			.getOne($page.url.searchParams.get("cardSet") ?? "")
 			.then((cardSet) => {
-				set(cardSet);
-			});
-	});
+				set(cardSet)
+			})
+	})
 
 	async function generateExampleCards() {
 		for (let i = 0; i < 20; i++) {
-			const tips = i % 2 === 0 ? 'jautajuma' : 'atbilzu';
+			const tips = i % 2 === 0 ? "jautajuma" : "atbilzu"
 
 			const card = {
 				virsraksts: `Kārts ${tips} ${i}`,
 				saturs: faker.lorem.sentence(),
-				karsuKomplekts: $page.url.searchParams.get('cardSet'),
+				karsuKomplekts: $page.url.searchParams.get("cardSet"),
 				tips: tips,
-				custom: '{}'
-			};
-			await $pb?.collection('spelesKartis').create(card);
+				custom: "{}"
+			}
+			await $pb?.collection("spelesKartis").create(card)
 		}
 	}
 </script>
@@ -46,12 +46,12 @@
 	<div class="content">
 		<form
 			on:submit={async (e) => {
-				e.preventDefault();
-				const form = e.currentTarget;
-				const formData = new FormData(form);
-				const data = Object.fromEntries(formData.entries());
-				$pb && (await $pb.collection('karsuKomplekti').update($cardSet.id ?? '', data));
-				location.reload();
+				e.preventDefault()
+				const form = e.currentTarget
+				const formData = new FormData(form)
+				const data = Object.fromEntries(formData.entries())
+				$pb && (await $pb.collection("karsuKomplekti").update($cardSet.id ?? "", data))
+				location.reload()
 			}}
 		>
 			<label class="label">
@@ -80,11 +80,11 @@
 			<button
 				on:click={() => {
 					$pb
-						?.collection('spelesKartis')
+						?.collection("spelesKartis")
 						.delete(card.id)
 						.then(() => {
-							cards.update((cards) => cards.filter((c) => c.id !== card.id));
-						});
+							cards.update((cards) => cards.filter((c) => c.id !== card.id))
+						})
 				}}
 				class="btn btn-sm variant-outline-error absolute top-0 right-0"
 			>
@@ -96,8 +96,8 @@
 			<div class="content text-center">Komplektā kāršu nav!</div>
 			<button
 				on:click={async () => {
-					await generateExampleCards();
-					location.reload();
+					await generateExampleCards()
+					location.reload()
 				}}
 				class="btn variant-filled-primary block mx-auto mt-3"
 			>
@@ -112,23 +112,23 @@
 	<div class="content">
 		<form
 			on:submit={async (e) => {
-				e.preventDefault();
-				const form = e.currentTarget;
-				const formData = new FormData(form);
+				e.preventDefault()
+				const form = e.currentTarget
+				const formData = new FormData(form)
 
 				const card = await $pb
-					?.collection('spelesKartis')
+					?.collection("spelesKartis")
 					.create({
-						virsraksts: formData.get('virsraksts')?.toString() ?? '',
-						saturs: formData.get('saturs')?.toString() ?? '',
-						karsuKomplekts: $page.url.searchParams.get('cardSet'),
-						tips: formData.get('tips')?.toString() ?? 'jautajuma',
-						custom: '{}'
+						virsraksts: formData.get("virsraksts")?.toString() ?? "",
+						saturs: formData.get("saturs")?.toString() ?? "",
+						karsuKomplekts: $page.url.searchParams.get("cardSet"),
+						tips: formData.get("tips")?.toString() ?? "jautajuma",
+						custom: "{}"
 					})
 					.then((card) => {
-						cards.update((cards) => [...cards, card]);
-						form.reset();
-					});
+						cards.update((cards) => [...cards, card])
+						form.reset()
+					})
 			}}
 		>
 			<label class="label">

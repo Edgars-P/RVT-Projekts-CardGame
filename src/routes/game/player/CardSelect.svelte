@@ -1,30 +1,30 @@
 <script lang="ts">
-	import GameCard from '$lib/components/GameCard.svelte';
-	import { playerPb } from '$lib/database';
-	import { getToastStore } from '@skeletonlabs/skeleton';
-	import type { RecordModel } from 'pocketbase';
-	import { writable } from 'svelte/store';
-	import { createGameMoveStore } from '../host/gameMoves';
+	import GameCard from "$lib/components/GameCard.svelte"
+	import { playerPb } from "$lib/database"
+	import { getToastStore } from "@skeletonlabs/skeleton"
+	import type { RecordModel } from "pocketbase"
+	import { writable } from "svelte/store"
+	import { createGameMoveStore } from "../host/gameMoves"
 
-	const toast = getToastStore();
+	const toast = getToastStore()
 
-	export let gameCardSets: string[];
-	export let gameMoves: RecordModel[];
+	export let gameCardSets: string[]
+	export let gameMoves: RecordModel[]
 
-	console.log(gameCardSets);
+	console.log(gameCardSets)
 
 	const cards = writable([] as RecordModel[], (set) => {
 		$playerPb
-			?.collection('spelesKartis')
+			?.collection("spelesKartis")
 			.getFullList({
 				filter: `tips = "atbilzu" && ( ${gameCardSets
 					.map((cardSet) => `karsuKomplekts = "${cardSet}"`)
-					.join(' || ')} )`
+					.join(" || ")} )`
 			})
 			.then((cardSets) => {
-				set(cardSets);
-			});
-	});
+				set(cardSets)
+			})
+	})
 </script>
 
 <div class="wrap">
@@ -37,7 +37,7 @@
 					class="btn variant-filled-primary"
 					on:click={() => {
 						$playerPb
-							?.collection('spelesGajieni')
+							?.collection("spelesGajieni")
 							.create({
 								player: $playerPb?.authStore.model?.id,
 								game: $playerPb?.authStore.model?.game,
@@ -45,10 +45,10 @@
 							})
 							.then(() => {
 								toast.trigger({
-									message: 'Kārts izspēlēta!',
-									background: 'variant-filled-success'
-								});
-							});
+									message: "Kārts izspēlēta!",
+									background: "variant-filled-success"
+								})
+							})
 					}}
 				>
 					Izspēlēt

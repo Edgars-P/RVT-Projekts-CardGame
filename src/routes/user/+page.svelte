@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
-	import { account } from '$lib/account';
-	import { pb } from '$lib/database';
-	import { TabGroup, Tab, TabAnchor } from '@skeletonlabs/skeleton';
-	import CardSets from './CardSets.svelte';
-	import MyGames from './MyGames.svelte';
+	import { goto } from "$app/navigation"
+	import { page } from "$app/stores"
+	import { account } from "$lib/account"
+	import { pb } from "$lib/database"
+	import { TabGroup, Tab, TabAnchor } from "@skeletonlabs/skeleton"
+	import CardSets from "./CardSets.svelte"
+	import MyGames from "./MyGames.svelte"
 
-	let tabSet = parseInt($page.url.searchParams.get('tab') ?? '') || 0;
+	let tabSet = parseInt($page.url.searchParams.get("tab") ?? "") || 0
 	$: {
-		$page.url.searchParams.set('tab', tabSet.toString());
+		$page.url.searchParams.set("tab", tabSet.toString())
 		goto(`?${$page.url.searchParams.toString()}`, {
 			replaceState: true
-		});
+		})
 	}
 </script>
 
@@ -27,12 +27,12 @@
 			{#if tabSet == 0}
 				<form
 					on:submit={async (e) => {
-						e.preventDefault();
-						const form = e.currentTarget;
-						const formData = new FormData(form);
-						const data = Object.fromEntries(formData.entries());
-						$pb && (await $pb.collection('lietotaji').update($account?.id ?? '', data));
-						location.reload();
+						e.preventDefault()
+						const form = e.currentTarget
+						const formData = new FormData(form)
+						const data = Object.fromEntries(formData.entries())
+						$pb && (await $pb.collection("lietotaji").update($account?.id ?? "", data))
+						location.reload()
 					}}
 				>
 					<div>
@@ -59,12 +59,12 @@
 				<!-- Mainīt paroli -->
 				<form
 					on:submit={async (e) => {
-						e.preventDefault();
-						const form = e.currentTarget;
-						const formData = new FormData(form);
-						const data = Object.fromEntries(formData.entries());
-						$pb && (await $pb.collection('lietotaji').update($account?.id ?? '', data));
-						location.reload();
+						e.preventDefault()
+						const form = e.currentTarget
+						const formData = new FormData(form)
+						const data = Object.fromEntries(formData.entries())
+						$pb && (await $pb.collection("lietotaji").update($account?.id ?? "", data))
+						location.reload()
 					}}
 				>
 					<div>

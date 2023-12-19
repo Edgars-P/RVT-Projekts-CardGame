@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { account } from '$lib/account';
-	import { pb } from '$lib/database';
-	import { Stepper, Step } from '@skeletonlabs/skeleton';
-	import type { RecordModel } from 'pocketbase';
+	import { account } from "$lib/account"
+	import { pb } from "$lib/database"
+	import { Stepper, Step } from "@skeletonlabs/skeleton"
+	import type { RecordModel } from "pocketbase"
 
-	let selectedCardSets: RecordModel[] = [];
+	let selectedCardSets: RecordModel[] = []
 
 	/**
 	 * Funkcija tiek izsaukta, kad tiek pabeigts pēdējais solis.
@@ -14,15 +14,15 @@
 		const data = {
 			raditajs: $account?.id,
 			secret: crypto.randomUUID(),
-			noteikumi: ['rule1'],
+			noteikumi: ["rule1"],
 			karsuKomplekti: selectedCardSets.map((x) => x.id)
-		};
+		}
 
-		const record = await $pb?.collection('speles').create(data);
+		const record = await $pb?.collection("speles").create(data)
 
 		if (record) {
-			console.log('record', record);
-			location.href = `/game/host?id=${record.id}`;
+			console.log("record", record)
+			location.href = `/game/host?id=${record.id}`
 		}
 	}
 </script>
@@ -59,8 +59,8 @@
 				Ielādē visus oficiālos kāršu komplektus un tos parāda kā izvēles pogas.
 			-->
 			{#await $pb
-				?.collection('karsuKomplekti')
-				.getFullList({ filter: 'official = true', requestKey: 'officialCardSets' })}
+				?.collection("karsuKomplekti")
+				.getFullList({ filter: "official = true", requestKey: "officialCardSets" })}
 				<h1>Loading...</h1>
 			{:then cardSets}
 				{#each cardSets ?? [] as cardSet}
@@ -73,9 +73,9 @@
 								Ja komplekts tiek izvēlēts, tas tiek pievienots selectedCardSets masīvam
 							*/
 							if (selectedCardSets.includes(cardSet)) {
-								selectedCardSets = selectedCardSets.filter((x) => x !== cardSet);
+								selectedCardSets = selectedCardSets.filter((x) => x !== cardSet)
 							} else {
-								selectedCardSets = [...selectedCardSets, cardSet];
+								selectedCardSets = [...selectedCardSets, cardSet]
 							}
 						}}
 					>
@@ -91,8 +91,8 @@
 
 			<div class="grid grid-cols-2 gap-4">
 				{#await $pb
-					?.collection('karsuKomplekti')
-					.getFullList({ filter: `creator = "${$account?.id}"`, requestKey: 'myCardSets' })}
+					?.collection("karsuKomplekti")
+					.getFullList({ filter: `creator = "${$account?.id}"`, requestKey: "myCardSets" })}
 					<h1>Ielādē...</h1>
 				{:then cardSets}
 					{#each cardSets ?? [] as cardSet}
@@ -105,9 +105,9 @@
 							Ja komplekts tiek izvēlēts, tas tiek pievienots selectedCardSets masīvam
 						*/
 								if (selectedCardSets.includes(cardSet)) {
-									selectedCardSets = selectedCardSets.filter((x) => x !== cardSet);
+									selectedCardSets = selectedCardSets.filter((x) => x !== cardSet)
 								} else {
-									selectedCardSets = [...selectedCardSets, cardSet];
+									selectedCardSets = [...selectedCardSets, cardSet]
 								}
 							}}
 						>

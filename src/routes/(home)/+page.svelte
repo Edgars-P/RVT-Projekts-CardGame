@@ -1,6 +1,6 @@
 <script>
-	import { account } from '$lib/account';
-	import StartGame from './StartGame.svelte';
+	import { account } from "$lib/account"
+	import StartGame from "./StartGame.svelte"
 </script>
 
 <main

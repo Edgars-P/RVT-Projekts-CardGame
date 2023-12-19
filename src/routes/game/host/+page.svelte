@@ -1,88 +1,88 @@
 <script lang="ts">
-	import NewQuestionCard from './NewQuestionCard.svelte';
+	import NewQuestionCard from "./NewQuestionCard.svelte"
 
-	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
-	import { pb } from '$lib/database';
-	import type { RecordModel } from 'pocketbase';
-	import { derived, readable } from 'svelte/store';
-	import { createCurrentGameMovesStore, createGameMoveStore } from './gameMoves';
-	import GameCard from '$lib/components/GameCard.svelte';
-	import CardSelect from './CardSelect.svelte';
+	import { browser } from "$app/environment"
+	import { page } from "$app/stores"
+	import { pb } from "$lib/database"
+	import type { RecordModel } from "pocketbase"
+	import { derived, readable } from "svelte/store"
+	import { createCurrentGameMovesStore, createGameMoveStore } from "./gameMoves"
+	import GameCard from "$lib/components/GameCard.svelte"
+	import CardSelect from "./CardSelect.svelte"
 
-	const gameId = $page.url.searchParams.get('id') as string;
+	const gameId = $page.url.searchParams.get("id") as string
 
 	if (!gameId && browser) {
-		location.href = '/';
+		location.href = "/"
 	}
 
 	const gameRecord = derived(
 		pb,
 		($pb, set) => {
-			if (!$pb) return;
-			console.log('gameId', gameId);
+			if (!$pb) return
+			console.log("gameId", gameId)
 			$pb
-				.collection('speles')
+				.collection("speles")
 				.getOne(gameId, {
-					expand: 'jautajumaKarts'
+					expand: "jautajumaKarts"
 				})
 				.then((gameRecord) => {
-					console.log('gameRecord', gameRecord);
-					set(gameRecord);
-				});
+					console.log("gameRecord", gameRecord)
+					set(gameRecord)
+				})
 
-			$pb?.collection('speles').subscribe(gameId, function (e) {
-				console.log(e);
-				set(e.record);
-			});
+			$pb?.collection("speles").subscribe(gameId, function (e) {
+				console.log(e)
+				set(e.record)
+			})
 		},
 		undefined as undefined | RecordModel
-	);
+	)
 
 	const gamePlayers = derived(
 		pb,
 		($pb, set, update) => {
-			if (!$pb) return;
+			if (!$pb) return
 
 			$pb
-				.collection('speletaji')
+				.collection("speletaji")
 				.getFullList({
 					filter: `game = "${gameId}"`
 				})
 				.then((gamePlayers) => {
-					set(gamePlayers);
+					set(gamePlayers)
 
-					$pb?.collection('speletaji').subscribe('*', function (e) {
-						if (e.record.game != gameId) return;
+					$pb?.collection("speletaji").subscribe("*", function (e) {
+						if (e.record.game != gameId) return
 
 						switch (e.action) {
-							case 'create':
-								update((players) => [...players, e.record]);
-								break;
-							case 'update':
+							case "create":
+								update((players) => [...players, e.record])
+								break
+							case "update":
 								update((players) => {
-									const index = players.findIndex((player) => player.id == e.record.id);
-									players[index] = e.record;
-									return players;
-								});
-								break;
-							case 'delete':
+									const index = players.findIndex((player) => player.id == e.record.id)
+									players[index] = e.record
+									return players
+								})
+								break
+							case "delete":
 								update((players) => {
-									const index = players.findIndex((player) => player.id == e.record.id);
-									players.splice(index, 1);
-									return players;
-								});
-								break;
+									const index = players.findIndex((player) => player.id == e.record.id)
+									players.splice(index, 1)
+									return players
+								})
+								break
 						}
-					});
-				});
+					})
+				})
 		},
 		[] as RecordModel[]
-	);
+	)
 
-	const gameMoves = createCurrentGameMovesStore(gameId, gamePlayers, pb);
+	const gameMoves = createCurrentGameMovesStore(gameId, gamePlayers, pb)
 
-	let selectNewQuestionCard = false;
+	let selectNewQuestionCard = false
 </script>
 
 <h1 class="h1">Spēles vadītāja skats</h1>
@@ -123,7 +123,7 @@
 				<button
 					class="btn variant-filled-primary"
 					on:click={() => {
-						selectNewQuestionCard = true;
+						selectNewQuestionCard = true
 					}}
 				>
 					Jauna kārts
@@ -133,7 +133,7 @@
 			<button
 				class="btn variant-filled-primary"
 				on:click={() => {
-					selectNewQuestionCard = true;
+					selectNewQuestionCard = true
 				}}
 			>
 				Jauna kārts

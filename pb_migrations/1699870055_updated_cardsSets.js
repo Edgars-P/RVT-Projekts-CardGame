@@ -1,16 +1,19 @@
 /// <reference path="../pb_data/types.d.ts" />
-migrate((db) => {
-  const dao = new Dao(db)
-  const collection = dao.findCollectionByNameOrId("jujjbq0fubmtwqr")
+migrate(
+	(db) => {
+		const dao = new Dao(db)
+		const collection = dao.findCollectionByNameOrId("jujjbq0fubmtwqr")
 
-  collection.name = "cardSets"
+		collection.name = "cardSets"
 
-  return dao.saveCollection(collection)
-}, (db) => {
-  const dao = new Dao(db)
-  const collection = dao.findCollectionByNameOrId("jujjbq0fubmtwqr")
+		return dao.saveCollection(collection)
+	},
+	(db) => {
+		const dao = new Dao(db)
+		const collection = dao.findCollectionByNameOrId("jujjbq0fubmtwqr")
 
-  collection.name = "cardsSets"
+		collection.name = "cardsSets"
 
-  return dao.saveCollection(collection)
-})
+		return dao.saveCollection(collection)
+	}
+)

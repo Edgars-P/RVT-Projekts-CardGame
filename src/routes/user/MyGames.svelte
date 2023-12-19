@@ -1,22 +1,22 @@
 <script lang="ts">
-	import { account } from '$lib/account';
-	import { pb } from '$lib/database';
-	import type { RecordModel } from 'pocketbase';
-	import { writable } from 'svelte/store';
+	import { account } from "$lib/account"
+	import { pb } from "$lib/database"
+	import type { RecordModel } from "pocketbase"
+	import { writable } from "svelte/store"
 
 	const myGames = writable([] as RecordModel[], (set) => {
 		$pb
-			?.collection('speles')
-			.getFullList({ filter: `raditajs = "${$account?.id}"`, expand: 'karsuKomplekti' })
+			?.collection("speles")
+			.getFullList({ filter: `raditajs = "${$account?.id}"`, expand: "karsuKomplekti" })
 			.then((games) => {
-				set(games);
-			});
-	});
+				set(games)
+			})
+	})
 </script>
 
 <button
 	on:click={() => {
-		window.print();
+		window.print()
 	}}
 	class="btn variant-filled-primary"
 >

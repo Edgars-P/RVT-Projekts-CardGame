@@ -1,34 +1,34 @@
 <script lang="ts">
-	import { adminPb } from '$lib/database';
-	import { getToastStore } from '@skeletonlabs/skeleton';
+	import { adminPb } from "$lib/database"
+	import { getToastStore } from "@skeletonlabs/skeleton"
 
-	console.log('adminPb', $adminPb?.authStore.model);
+	console.log("adminPb", $adminPb?.authStore.model)
 
-	const toast = getToastStore();
+	const toast = getToastStore()
 </script>
 
 <form
 	class="card card-body card-flat max-w-lg p-3 mx-auto mt-4"
 	on:submit={async (e) => {
-		e.preventDefault();
-		const data = new FormData(e.currentTarget);
+		e.preventDefault()
+		const data = new FormData(e.currentTarget)
 
 		$adminPb?.admins
 			.authWithPassword(
-				(data.get('username') ?? '').toString(),
-				(data.get('password') ?? '').toString()
+				(data.get("username") ?? "").toString(),
+				(data.get("password") ?? "").toString()
 			)
 			.then((result) => {
-				console.log('result', result);
-				location.reload();
+				console.log("result", result)
+				location.reload()
 			})
 			.catch((error) => {
-				console.log('error', error);
+				console.log("error", error)
 				toast.trigger({
-					message: 'Nepareizs lietotājvārds vai parole',
-					background: 'variant-filled-error'
-				});
-			});
+					message: "Nepareizs lietotājvārds vai parole",
+					background: "variant-filled-error"
+				})
+			})
 	}}
 >
 	<h3 class="h3 text-center">Administrators</h3>
