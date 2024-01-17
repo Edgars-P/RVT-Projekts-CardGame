@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "concurrently \"vite dev\" \"npm:db\"",
+		"dev": "pnpm i && concurrently \"vite dev\" \"npm:db\"",
 		"build": "vite build",
 		"preview": "vite preview",
 		"db": "pocketbase serve",
