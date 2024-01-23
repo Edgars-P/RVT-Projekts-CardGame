@@ -5,5 +5,10 @@ export default defineConfig({
 	server: {
 		port: 8080
 	},
-	plugins: [sveltekit()]
+	plugins: [sveltekit()],
+	envPrefix: [
+		"CODESPACES",
+		"GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN",
+		"CODESPACE_NAME"
+	]
 })

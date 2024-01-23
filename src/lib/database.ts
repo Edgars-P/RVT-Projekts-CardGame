@@ -7,9 +7,11 @@ import PocketBase, {
 	type AuthModel
 } from "pocketbase"
 
+const PB_ADDRESS = import.meta.env.CODESPACES ? `https://${import.meta.env.CODESPACE_NAME}-8090.${import.meta.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}` : "http://localhost:8090"
+
 export const pb = writable<PocketBase | undefined>(undefined, (set) => {
 	if (browser) {
-		const pb = new PocketBase("http://localhost:8090")
+		const pb = new PocketBase(PB_ADDRESS)
 		set(pb)
 	}
 })
@@ -124,7 +126,7 @@ class PlayerAuthStore extends BaseAuthStore {
 
 export const playerPb = writable<PocketBase | undefined>(undefined, (set) => {
 	if (browser) {
-		const pb = new PocketBase("http://localhost:8090", new PlayerAuthStore())
+		const pb = new PocketBase(PB_ADDRESS, new PlayerAuthStore())
 		set(pb)
 	}
 })
@@ -239,7 +241,7 @@ class AdminAuthStore extends BaseAuthStore {
 
 export const adminPb = writable<PocketBase | undefined>(undefined, (set) => {
 	if (browser) {
-		const pb = new PocketBase("http://localhost:8090", new AdminAuthStore())
+		const pb = new PocketBase(PB_ADDRESS, new AdminAuthStore())
 		set(pb)
 	}
 })
