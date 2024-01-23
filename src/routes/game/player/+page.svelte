@@ -41,7 +41,7 @@
 			password: password,
 			passwordConfirm: password,
 			game: gameId,
-			name: prompt("Ievadi savu vārdu"),
+			name: localStorage.getItem("player_name") ?? "Spēlētājs",
 			secret: secret
 		}
 
