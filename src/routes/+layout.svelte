@@ -21,7 +21,7 @@
 <Toast position="tr" />
 
 <!--
-	"Modal" komponents kas tiek izmantots lai parādītu modālo logu.
+	"Modal" komponents kas tiek izmantots lai parādītu modālu ziņas.
 -->
 <Modal />
 

@@ -9,7 +9,7 @@
 </script>
 
 <!-- 
-    Palūdz lietotāja vārdu
+    Palūdz lietotāja vārdu pirms rāda UI
 -->
 
 {#if !name}

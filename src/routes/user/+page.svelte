@@ -16,6 +16,10 @@
 	}
 </script>
 
+<!--
+	Lietotāja profila lapa, var redzēt savus datus un veikt izmaiņas.
+-->
+
 <div class="card max-w-5xl mx-auto mt-4 variant-glass">
 	<TabGroup>
 		<Tab bind:group={tabSet} name="Iestatījumi" value={0}>Iestatījumi</Tab>
@@ -95,8 +99,10 @@
 					</button>
 				</form>
 			{:else if tabSet == 2}
+				<!-- Kāršu komplekti -->
 				<CardSets />
 			{:else if tabSet == 3}
+				<!-- Spēļu vēsture -->
 				<MyGames />
 			{/if}
 		</div>

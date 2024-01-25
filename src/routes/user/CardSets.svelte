@@ -37,6 +37,9 @@
 <div class="wrap">
 	<h1 class="h1">Mani kāršu komplekti</h1>
 
+	<!-- 
+		Visi kāršu komplekti
+	-->
 	{#each $myCardSets as cardSet}
 		<div class="card my-3 p-3">
 			<span class="font-bold">{cardSet.name} </span>
@@ -63,6 +66,9 @@
 		</div>
 	{/each}
 
+	<!--
+		Jauna komplekta izveide
+	-->
 	<div class="card p-3">
 		<div class="card-header font-bold">Izveidot jaunu kāršu komplektu</div>
 		<div class="content">

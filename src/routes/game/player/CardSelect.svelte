@@ -13,6 +13,9 @@
 
 	console.log(gameCardSets)
 
+	/* 
+		Atrod visas atbilžu kārtis kuras var izspēlēt
+	*/
 	const cards = writable([] as RecordModel[], (set) => {
 		$playerPb
 			?.collection("spelesKartis")
@@ -36,6 +39,9 @@
 				<button
 					class="btn variant-filled-primary"
 					on:click={() => {
+						/* 
+							Izspēlē izvēlēto kārti
+						*/
 						$playerPb
 							?.collection("spelesGajieni")
 							.create({

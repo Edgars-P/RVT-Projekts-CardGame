@@ -65,7 +65,7 @@
 				<button
 					class="btn btn-primary variant-filled-primary"
 					on:click={() => {
-						filter = null
+						filter = undefined
 					}}
 				>
 					Noņemt filtrus

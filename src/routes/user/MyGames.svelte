@@ -14,6 +14,10 @@
 	})
 </script>
 
+<!--
+	Spēļu vēsture
+-->
+
 <button
 	on:click={() => {
 		window.print()

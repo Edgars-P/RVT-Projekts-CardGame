@@ -41,6 +41,10 @@
 	}
 </script>
 
+<!--
+	Kāršu komplekta rediģēšana
+-->
+
 <div class="card mx-5 my-3 p-3">
 	<div class="font-bold text-center">Kāršu komplekts: {$cardSet.name}</div>
 	<div class="content">

@@ -2,6 +2,10 @@
 	import { faker } from "@faker-js/faker"
 </script>
 
+<!--
+	Par mums lapa, pagaidām viltus teksts
+-->
+
 <div class="card m-5 max-w-3xl mx-auto">
 	<h1 class="h1 card-heder text-center">Par mums</h1>
 

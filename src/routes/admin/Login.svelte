@@ -7,6 +7,11 @@
 	const toast = getToastStore()
 </script>
 
+<!--
+	Administratora pierakstīšanās lapa
+	Administratoram ir pilna pieeja datubāzei
+-->
+
 <form
 	class="card card-body card-flat max-w-lg p-3 mx-auto mt-4"
 	on:submit={async (e) => {

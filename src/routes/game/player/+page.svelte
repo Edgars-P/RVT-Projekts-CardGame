@@ -56,6 +56,9 @@
 		location.reload()
 	})
 
+	/* 
+		Seko līdzi spēles ieraksta izmaiņām
+	*/
 	const gameRecord = derived(
 		playerPb,
 		($pb, set) => {
@@ -77,6 +80,9 @@
 		undefined as undefined | RecordModel
 	)
 
+	/*
+		Seko līdzi jaunu spēlētāju pievienošanai
+	*/
 	const gamePlayers = derived(
 		playerPb,
 		($pb, set, update) => {
@@ -117,6 +123,9 @@
 		[] as RecordModel[]
 	)
 
+	/*
+		Seko līdzi spēles gājieniem
+	*/
 	let gameMoves = createCurrentGameMovesStore(gameId, gamePlayers, playerPb)
 </script>
 

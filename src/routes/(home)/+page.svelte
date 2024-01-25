@@ -3,6 +3,11 @@
 	import StartGame from "./StartGame.svelte"
 </script>
 
+<!--
+	Sākumlapa
+	Rāda dažādus elementus atkarībā vai lietotājs ir reģistrēts
+-->
+
 <main
 	class="flex flex-col items-center justify-center flex-1 w-full max-w-4xl px-4 py-8 mx-auto md:px-8 md:py-16"
 >
