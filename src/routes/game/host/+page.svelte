@@ -9,6 +9,7 @@
 	import { createCurrentGameMovesStore, createGameMoveStore } from "./gameMoves"
 	import GameCard from "$lib/components/GameCard.svelte"
 	import CardSelect from "./CardSelect.svelte"
+	import QrCode from "$lib/components/QrCode.svelte"
 
 	const gameId = $page.url.searchParams.get("id") as string
 
@@ -94,10 +95,10 @@
 	{/if}
 
 	{#if $gameRecord}
+		{@const gameUrl = new URL(`/game/player?id=${gameId}&secret=${$gameRecord?.secret}`, $page.url.href).href}
 		<div class="qr">
-
-			<a href="/game/player?id={gameId}&secret={$gameRecord?.secret}" target="_blank">
-				https://example.com/game/player?id={gameId}&secret={$gameRecord?.secret}
+			<a href={gameUrl} target="_blank">
+				<QrCode url={gameUrl}/>
 			</a>
 		</div>
 
