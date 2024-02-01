@@ -4,6 +4,7 @@
 	import type { RecordModel } from "pocketbase"
 	import { writable } from "svelte/store"
 	import { faker } from "@faker-js/faker"
+	import { goto } from "$app/navigation"
 
 	const cards = writable([] as RecordModel[], (set) => {
 		$pb
@@ -55,7 +56,7 @@
 				const formData = new FormData(form)
 				const data = Object.fromEntries(formData.entries())
 				$pb && (await $pb.collection("karsuKomplekti").update($cardSet.id ?? "", data))
-				location.reload()
+				goto("/user?tab=2")
 			}}
 		>
 			<label class="label">
