@@ -85,41 +85,46 @@
 	let selectNewQuestionCard = false
 </script>
 
-<h1 class="h1">Spēles vadītāja skats</h1>
-
-{#if selectNewQuestionCard}
-	<!--
+<div class="gameBoard">
+	{#if selectNewQuestionCard}
+		<!--
 	Izveido popup logu kurā tiek parādītas visas kārtis no izvēlētājiem komplektiem.
 -->
-	<NewQuestionCard {gameRecord} {gameMoves} bind:selectNewQuestionCard {gameId}></NewQuestionCard>
-{/if}
+		<NewQuestionCard {gameRecord} {gameMoves} bind:selectNewQuestionCard {gameId}></NewQuestionCard>
+	{/if}
 
-{#if $gameRecord}
-	<p>
-		<br />
-		<b>Pievienojies šai spēlei</b>:
-		<a href="/game/player?id={gameId}&secret={$gameRecord?.secret}" target="_blank">
-			https://example.com/game/player?id={gameId}&secret={$gameRecord?.secret}
-		</a>
-	</p>
+	{#if $gameRecord}
+		<div class="qr">
 
-	<hr />
+			<a href="/game/player?id={gameId}&secret={$gameRecord?.secret}" target="_blank">
+				https://example.com/game/player?id={gameId}&secret={$gameRecord?.secret}
+			</a>
+		</div>
 
-	<p>
-		Spēlētāji:
-		{#each $gamePlayers ?? [] as player}
-			<div class="chip variant-filled m-1 px-5">
-				{player.name}
-			</div>
-		{/each}
-	</p>
+		<div class="players">
+			Spēlētāji:
+			{#each $gamePlayers ?? [] as player}
+				<div class="chip variant-filled m-1 px-5">
+					{player.name}
+				</div>
+			{/each}
+		</div>
 
-	<hr />
+		<hr />
 
-	<p>
-		<b>Jautājuma kārts:</b>
-		{#if $gameMoves[0]}
-			<GameCard card={$gameMoves[0].expand?.card}>
+		<div class="questionCard">
+			{#if $gameMoves[0]}
+				<GameCard card={$gameMoves[0].expand?.card}>
+					<button
+						class="btn variant-filled-primary"
+						on:click={() => {
+							selectNewQuestionCard = true
+						}}
+					>
+						Jauna kārts
+					</button>
+				</GameCard>
+			{:else}
 				<button
 					class="btn variant-filled-primary"
 					on:click={() => {
@@ -128,34 +133,34 @@
 				>
 					Jauna kārts
 				</button>
-			</GameCard>
-		{:else}
-			<button
-				class="btn variant-filled-primary"
-				on:click={() => {
-					selectNewQuestionCard = true
-				}}
-			>
-				Jauna kārts
-			</button>
-		{/if}
-	</p>
+			{/if}
+		</div>
 
-	<hr />
-	<hr />
-	<hr />
+		<div class="flex flex-row flex-wrap answers">
+			{#each $gameMoves.splice(1) ?? [] as move}
+				<GameCard card={move.card}>
+					<div class="chip variant-filled m-1 absolute top-0 right-1/2 translate-x-1/2 -translate-y-4">
+						{move.expand?.player?.name}
+					</div>
+				</GameCard>
+			{/each}
+		</div>
+	{/if}
+</div>
 
-	<h1 class="h3">Spēles gājieni</h1>
 
-	<div class="flex flex-row flex-wrap">
-		{#each $gameMoves.splice(1) ?? [] as move}
-			<GameCard card={move.card}>
-				<div
-					class="chip variant-filled m-1 absolute top-0 right-1/2 translate-x-1/2 -translate-y-4"
-				>
-					{move.expand?.player?.name}
-				</div>
-			</GameCard>
-		{/each}
-	</div>
-{/if}
+<style>
+	.gameBoard {
+		display: grid;
+		grid-template-columns: 1fr 1fr 15rem;
+		grid-template-rows: min-content min-content 1fr;
+		grid-column-gap: 0px;
+		grid-row-gap: 0px;
+		min-height: calc(100vh - 5rem);
+	}
+
+	.qr { grid-area: 1 / 3 / 3 / 4; }
+.questionCard { grid-area: 1 / 1 / 2 / 3; }
+.answers { grid-area: 2 / 1 / 4 / 3; }
+.players { grid-area: 3 / 3 / 4 / 4; }
+</style>
