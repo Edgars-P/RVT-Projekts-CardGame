@@ -49,6 +49,6 @@
 		"pocketbase": "0.21.0",
 		"qrcode": "^1.5.3",
 		"sanitize.css": "^13.0.0",
-		"sass": "^1.71.0"
+		"sass": "^1.71.1"
 	}
 }
