@@ -39,4 +39,4 @@ Spēlētāji pievienojas spēlei noskenējot QR kodu savā telefonā, vai ievado
 - [ ] Praktiski piemēri
   - [ ] Praktiski komplekti
 
-- [ ] Diskusiju rīks?
+- [x] Diskusiju rīks?
