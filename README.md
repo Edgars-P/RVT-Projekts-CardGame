@@ -35,3 +35,8 @@ Spēlētāji pievienojas spēlei noskenējot QR kodu savā telefonā, vai ievado
   - [ ] Labāk definēt administratora lietotājus
   - [ ] Internetveikals
   - [ ] Noteikumi
+
+- [ ] Praktiski piemēri
+  - [ ] Praktiski komplekti
+
+- [ ] Diskusiju rīks?
