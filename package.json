@@ -46,7 +46,7 @@
 		"@faker-js/faker": "^8.4.1",
 		"nanoid": "^5.0.5",
 		"nanoid-dictionary": "^4.3.0",
-		"pocketbase": "0.21.0",
+		"pocketbase": "0.21.1",
 		"qrcode": "^1.5.3",
 		"sanitize.css": "^13.0.0",
 		"sass": "^1.71.1"
