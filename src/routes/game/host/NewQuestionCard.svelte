@@ -16,13 +16,13 @@
 
 <div class="absolute inset-0 bg-surface-100 bg-opacity-75 z-50" style="display: block;">
 	<div
-		class="card absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 h-5/6 overflow-y-scroll"
+		class="card absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 h-max"
 	>
 		<div class="modal-header">
 			<h2 class="h2 text-center">Izvēlies jautājuma karti</h2>
 		</div>
 		<div class="modal-body">
-			<div class="flex flex-wrap">
+			<div class="flex justify-center">
 				<CardSelect
 					gameCardSets={$gameRecord?.karsuKomplekti}
 					gameMoves={$gameMoves}

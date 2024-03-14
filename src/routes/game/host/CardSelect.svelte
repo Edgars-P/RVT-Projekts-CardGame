@@ -5,6 +5,7 @@
 	import { writable } from "svelte/store"
 	import { createGameMoveStore } from "../host/gameMoves"
 	import { pb } from "$lib/database"
+	import { random } from "nanoid"
 
 	const toast = getToastStore()
 
@@ -31,10 +32,10 @@
 
 <div class="wrap">
 	<div class="flex flex-wrap">
-		{#each $cards as card}
+		{#each $cards.sort(() => Math.random() - 0.5).slice(0, 5) as card}
 			<GameCard card={card.id}>
 				<button
-					class="btn variant-filled-primary"
+					class="btn variant-filled-primary absolute -bottom-2 left-1/2 -translate-x-1/2"
 					on:click={() => {
 						$pb
 							?.collection("spelesGajieni")

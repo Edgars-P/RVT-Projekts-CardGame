@@ -34,10 +34,10 @@
 	<h1 class="h1">Izvēlies kārti kuru izspēlēt</h1>
 
 	<div class="flex flex-wrap">
-		{#each $cards as card}
+		{#each $cards.sort(() => Math.random() - 0.5) as card}
 			<GameCard card={card.id}>
 				<button
-					class="btn variant-filled-primary"
+					class="btn variant-filled-primary absolute -bottom-2 left-1/2 -translate-x-1/2"
 					on:click={() => {
 						/* 
 							Izspēlē izvēlēto kārti
