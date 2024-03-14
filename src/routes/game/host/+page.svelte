@@ -95,10 +95,14 @@
 	{/if}
 
 	{#if $gameRecord}
-		{@const gameUrl = new URL(`/game/player?id=${gameId}&secret=${$gameRecord?.secret}`, $page.url.href).href}
-		<div class="qr">
-			<a href={gameUrl} target="_blank">
-				<QrCode url={gameUrl}/>
+		{@const gameUrl = new URL(
+			`/game/player?id=${gameId}&secret=${$gameRecord?.secret}`,
+			$page.url.href
+		).href}
+		<div class="qr card p-2 grid grid-rows-[max-content_1fr] h-max m-2 justify-center text-center">
+			<h3 class="font-bold text-lg w-full">Noskenē QR kodu lai pievienotos!</h3>
+			<a href={gameUrl} target="_blank" class="flex">
+				<QrCode url={gameUrl} />
 			</a>
 		</div>
 
@@ -117,7 +121,7 @@
 			{#if $gameMoves[0]}
 				<GameCard card={$gameMoves[0].expand?.card}>
 					<button
-						class="btn variant-filled-primary"
+						class="btn variant-filled-primary absolute -bottom-2 left-1/2 -translate-x-1/2"
 						on:click={() => {
 							selectNewQuestionCard = true
 						}}
@@ -140,7 +144,9 @@
 		<div class="flex flex-row flex-wrap answers">
 			{#each $gameMoves.splice(1) ?? [] as move}
 				<GameCard card={move.card}>
-					<div class="chip variant-filled m-1 absolute top-0 right-1/2 translate-x-1/2 -translate-y-4">
+					<div
+						class="chip variant-filled m-1 absolute top-0 right-1/2 translate-x-1/2 -translate-y-4"
+					>
 						{move.expand?.player?.name}
 					</div>
 				</GameCard>
@@ -148,7 +154,6 @@
 		</div>
 	{/if}
 </div>
-
 
 <style>
 	.gameBoard {
@@ -160,8 +165,16 @@
 		min-height: calc(100vh - 5rem);
 	}
 
-	.qr { grid-area: 1 / 3 / 3 / 4; }
-.questionCard { grid-area: 1 / 1 / 2 / 3; }
-.answers { grid-area: 2 / 1 / 4 / 3; }
-.players { grid-area: 3 / 3 / 4 / 4; }
+	.qr {
+		grid-area: 1 / 3 / 3 / 4;
+	}
+	.questionCard {
+		grid-area: 1 / 1 / 2 / 3;
+	}
+	.answers {
+		grid-area: 2 / 1 / 4 / 3;
+	}
+	.players {
+		grid-area: 3 / 3 / 4 / 4;
+	}
 </style>

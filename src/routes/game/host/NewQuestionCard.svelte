@@ -16,7 +16,7 @@
 
 <div class="absolute inset-0 bg-surface-100 bg-opacity-75 z-50" style="display: block;">
 	<div
-		class="card absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 h-max"
+		class="card absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 h-max shadow-xl"
 	>
 		<div class="modal-header">
 			<h2 class="h2 text-center">Izvēlies jautājuma karti</h2>
