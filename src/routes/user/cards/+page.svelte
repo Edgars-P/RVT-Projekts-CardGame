@@ -155,3 +155,51 @@
 		</form>
 	</div>
 </div>
+
+<div class="card max-w-xl mx-auto p-3 mb-12">
+	<div class="font-bold text-center">Ievietot kārtis no saraksta</div>
+	<div class="content">
+		<form
+			on:submit={async (e) => {
+				e.preventDefault()
+				const form = e.currentTarget
+				const formData = new FormData(form)
+
+				const allCards = formData.get("saturi")?.toString().trim().split("\n")
+
+				if (!allCards?.length) {
+					throw new Error("Kārtis nav definētas!")
+				}
+
+				for (const card of allCards) {
+					await $pb
+						?.collection("spelesKartis")
+						.create({
+							virsraksts: formData.get("tips")?.toString() ?? "jautajuma",
+							saturs: card,
+							karsuKomplekts: $page.url.searchParams.get("cardSet"),
+							tips: formData.get("tips")?.toString() ?? "jautajuma",
+							custom: "{}"
+						})
+						.then((card) => {
+							cards.update((cards) => [...cards, card])
+							form.reset()
+						})
+				}
+			}}
+		>
+			<label class="label">
+				Kārtis (katra kārts jaunā rindā)
+				<textarea class="input" name="saturi" id="saturi"></textarea>
+			</label>
+			<label class="label">
+				Tips
+				<select class="input" name="tips" id="tips">
+					<option value="jautajuma">Jautājuma</option>
+					<option value="atbilzu">Atbildes</option>
+				</select>
+			</label>
+			<button class="btn variant-filled-primary block mx-auto mt-3">Izveidot</button>
+		</form>
+	</div>
+</div>
