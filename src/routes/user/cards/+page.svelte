@@ -189,15 +189,12 @@
 			}}
 		>
 			<label class="label">
-				Kārtis (katra kārts jaunā rindā)
-				<textarea class="input" name="saturi" id="saturi"></textarea>
+				Virsraksts
+				<input class="input" type="text" name="title" id="title" />
 			</label>
 			<label class="label">
-				Tips
-				<select class="input" name="tips" id="tips">
-					<option value="jautajuma">Jautājuma</option>
-					<option value="atbilzu">Atbildes</option>
-				</select>
+				Kārtis (katra kārts jaunā rindā)
+				<textarea class="input" name="saturi" id="saturi"></textarea>
 			</label>
 			<button class="btn variant-filled-primary block mx-auto mt-3">Izveidot</button>
 		</form>
