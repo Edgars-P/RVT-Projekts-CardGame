@@ -6,7 +6,7 @@
 	import { getCard } from "$lib/cardCache"
 </script>
 
-<div class="card w-[13rem] h-[20rem] m-4 p-4 relative shadow-lg">
+<div class="card w-[13rem] h-[20rem] m-4 p-4 relative shadow-lg flex-shrink-0">
 	{#if $pb}
 		{#await typeof card == "string" ? getCard($pb, card) : card then data}
 			<h1 class="h3">{data?.virsraksts}</h1>

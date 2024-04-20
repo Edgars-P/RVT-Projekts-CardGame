@@ -30,58 +30,64 @@
 -->
 <AppShell>
 	<svelte:fragment slot="pageHeader">
-		<!--
+		{#if !$page.url.pathname.startsWith("/game/player")}
+			<!--
 			Lapas galvene
 		-->
-		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
-			<!--
+			<AppBar
+				gridColumns="grid-cols-3"
+				slotDefault="place-self-center"
+				slotTrail="place-content-end"
+			>
+				<!--
 				Navigācijas pogas
 			-->
-			<svelte:fragment slot="lead">
-				<ul class="flex items-center justify-center space-x-2">
-					<li>
-						<a
-							class="nav btn btn-sm
+				<svelte:fragment slot="lead">
+					<ul class="flex items-center justify-center space-x-2">
+						<li>
+							<a
+								class="nav btn btn-sm
 								{$page.url.pathname === '/' ? 'variant-outline-primary' : 'variant-filled-primary'}
 							"
-							href="/"
-						>
-							Sākums
-						</a>
-					</li>
-					<li>
-						<a
-							class="nav btn btn-sm
+								href="/"
+							>
+								Sākums
+							</a>
+						</li>
+						<li>
+							<a
+								class="nav btn btn-sm
 								{$page.url.pathname === '/about' ? 'variant-outline-primary' : 'variant-filled-primary'}
 							"
-							href="/about"
-						>
-							Par mums
-						</a>
-					</li>
-				</ul>
-			</svelte:fragment>
+								href="/about"
+							>
+								Par mums
+							</a>
+						</li>
+					</ul>
+				</svelte:fragment>
 
-			<!--
+				<!--
 				Logo
 			-->
-			<a class="home" href="/">
-				<div class="logo h3 font-bold">CardGame</div>
-			</a>
+				<a class="home" href="/">
+					<div class="logo h3 font-bold">CardGame</div>
+				</a>
 
-			<!--
+				<!--
 				Pārbaida vai lietotājs ir pierakstījies un parāda atbilstošu pogu.
 			-->
-			<svelte:fragment slot="trail">
-				<ul>
-					{#if $account}
-						<AccountButton />
-					{:else}
-						<LogInButton />
-					{/if}
-				</ul>
-			</svelte:fragment>
-		</AppBar>
+				<svelte:fragment slot="trail">
+					<ul>
+						{#if $account}
+							<AccountButton />
+						{:else}
+							<LogInButton />
+						{/if}
+					</ul>
+				</svelte:fragment>
+			</AppBar>
+		{/if}
 	</svelte:fragment>
 	<slot />
 </AppShell>
