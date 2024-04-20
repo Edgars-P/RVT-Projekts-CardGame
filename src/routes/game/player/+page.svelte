@@ -129,25 +129,25 @@
 	let gameMoves = createCurrentGameMovesStore(gameId, gamePlayers, playerPb)
 </script>
 
-<h1 class="h1">Spēlētāja skats</h1>
-
 {#if playerRecord && playerRecord.game == gameId}
-	Pievienots spēlei ar vārdu {playerRecord.name}!
+	<span class="font-bold">Vārds: </span>
+	{#if $gameMoves[0]}
+		{playerRecord.name}
 
-	<hr />
-	<p>
-		<b>Jautājuma kārts:</b>
-		{#if $gameMoves[0]}
+		<div class="w-max mx-auto">
 			<GameCard card={$gameMoves[0].expand?.card} />
-		{/if}
-	</p>
+		</div>
 
-	<hr />
-	{#if $gameRecord?.karsuKomplekti}
-		{#if $gameMoves.every((move) => move.player !== playerRecord?.id)}
-			<CardSelect gameCardSets={$gameRecord?.karsuKomplekti} gameMoves={$gameMoves} />
-		{:else}
-			<p>Spēles kārts ir izspēlēta!</p>
+		{#if $gameRecord?.karsuKomplekti}
+			{#if $gameMoves.every((move) => move.player !== playerRecord?.id)}
+				<CardSelect gameCardSets={$gameRecord?.karsuKomplekti} gameMoves={$gameMoves} />
+			{:else}
+				<div class="w-max mx-auto card p-5 mt-10">Spēles kārts ir izspēlēta!</div>
+			{/if}
 		{/if}
+	{:else}
+		<div class="grid justify-items-center content-center h-full p-4">
+			<div class="card w-max p-4 font-bold">Spēles vadītājs izvēlas kārti...</div>
+		</div>
 	{/if}
 {/if}
