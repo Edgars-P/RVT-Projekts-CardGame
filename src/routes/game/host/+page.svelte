@@ -10,6 +10,8 @@
 	import GameCard from "$lib/components/GameCard.svelte"
 	import CardSelect from "./CardSelect.svelte"
 	import QrCode from "$lib/components/QrCode.svelte"
+	import DraggableObject from "$lib/components/DraggableObject.svelte"
+	import { fly } from "svelte/transition"
 
 	const gameId = $page.url.searchParams.get("id") as string
 
@@ -91,6 +93,7 @@
 		<!--
 	Izveido popup logu kurā tiek parādītas visas kārtis no izvēlētājiem komplektiem.
 -->
+
 		<NewQuestionCard {gameRecord} {gameMoves} bind:selectNewQuestionCard {gameId}></NewQuestionCard>
 	{/if}
 
@@ -123,7 +126,16 @@
 					<button
 						class="btn variant-filled-primary absolute -bottom-2 left-1/2 -translate-x-1/2"
 						on:click={() => {
-							selectNewQuestionCard = true
+							$pb
+								?.collection("spelesGajieni")
+								.create({
+									player: undefined,
+									game: gameId,
+									card: null
+								})
+								.then(() => {
+									selectNewQuestionCard = true
+								})
 						}}
 					>
 						Jauna kārts
@@ -143,13 +155,15 @@
 
 		<div class="flex flex-row flex-wrap answers">
 			{#each $gameMoves.splice(1) ?? [] as move}
-				<GameCard card={move.card}>
-					<div
-						class="chip variant-filled m-1 absolute top-0 right-1/2 translate-x-1/2 -translate-y-4"
-					>
-						{move.expand?.player?.name}
-					</div>
-				</GameCard>
+				<DraggableObject>
+					<GameCard card={move.card}>
+						<div
+							class="chip variant-filled m-1 absolute top-0 right-1/2 translate-x-1/2 -translate-y-4"
+						>
+							{move.expand?.player?.name}
+						</div>
+					</GameCard>
+				</DraggableObject>
 			{/each}
 		</div>
 	{/if}

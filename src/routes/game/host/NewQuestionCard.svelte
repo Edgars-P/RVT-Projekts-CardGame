@@ -7,6 +7,7 @@
 	import { createCurrentGameMovesStore, createGameMoveStore } from "./gameMoves"
 	import GameCard from "$lib/components/GameCard.svelte"
 	import CardSelect from "./CardSelect.svelte"
+	import { fade, fly, scale } from "svelte/transition"
 
 	export let gameRecord: Readable<RecordModel>
 	export let gameMoves: Readable<RecordModel[]>
@@ -14,7 +15,11 @@
 	export let gameId: string
 </script>
 
-<div class="absolute inset-0 bg-surface-100 bg-opacity-75 z-50" style="display: block;">
+<div
+	class="absolute inset-0 bg-surface-100 bg-opacity-75 z-50"
+	style="display: block;"
+	transition:scale={{ duration: 300 }}
+>
 	<div
 		class="card absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 h-max shadow-xl"
 	>

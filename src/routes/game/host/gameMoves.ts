@@ -70,12 +70,16 @@ export function createCurrentGameMovesStore(
 			console.log("allMoves", $allGameMoves)
 
 			const lastQuestionIndex = $allGameMoves.findLastIndex(
-				(x) => x.expand?.card.tips == "jautajuma"
+				(x) => x.expand?.card.tips == "jautajuma" || x.card == ""
 			)
 
 			console.log("lastQuestionIndex", lastQuestionIndex)
 
-			set($allGameMoves.slice(lastQuestionIndex))
+			let moves = $allGameMoves.slice(lastQuestionIndex)
+
+			console.log(moves)
+
+			set(moves.at(0)?.card == "" ? [] : moves)
 		},
 		[] as RecordModel[]
 	)
