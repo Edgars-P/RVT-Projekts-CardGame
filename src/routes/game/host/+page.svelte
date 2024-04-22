@@ -107,6 +107,8 @@
 			<a href={gameUrl} target="_blank" class="flex">
 				<QrCode url={gameUrl} />
 			</a>
+
+			<a href="/game/host/moves?id={gameId}">Beigt spēli!</a>
 		</div>
 
 		<div class="players">
