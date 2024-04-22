@@ -18,8 +18,8 @@ dependencies:
     specifier: ^4.3.0
     version: 4.3.0
   pocketbase:
-    specifier: 0.21.1
-    version: 0.21.1
+    specifier: 0.21.2
+    version: 0.21.2
   qrcode:
     specifier: ^1.5.3
     version: 1.5.3
@@ -1572,8 +1572,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
-  /pocketbase@0.21.1:
-    resolution: {integrity: sha512-0PvCP4pKtxsV9kwldEGyibEvhwOcx9jSCrz3WN5CgPILJfM0z76f1op9WE8/8UgikDsMdRsc5iBLfKintrJS1g==}
+  /pocketbase@0.21.2:
+    resolution: {integrity: sha512-XZdgU9dEv3TPjexDRHy5feYrZrJhWqxTki8ClFGpsnC51G3Qkwoa/U7CVG72jYcLDP3p0HiEhRUUevnlryWkHA==}
     dev: false
 
   /postcss-import@15.1.0(postcss@8.4.38):
