@@ -33,6 +33,7 @@
 					gameMoves={$gameMoves}
 					bind:selectNewQuestionCard
 					{gameId}
+					cardAmount={$gameRecord?.noteikumi?.hostQuestionCards}
 				/>
 			</div>
 		</div>

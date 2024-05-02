@@ -14,7 +14,7 @@
 		const data = {
 			raditajs: $account?.id,
 			secret: crypto.randomUUID(),
-			noteikumi: ["rule1"],
+			noteikumi: gameRules,
 			karsuKomplekti: selectedCardSets.map((x) => x.id)
 		}
 
@@ -24,6 +24,13 @@
 			console.log("record", record)
 			location.href = `/game/host?id=${record.id}`
 		}
+	}
+
+	let gameRules = {
+		hostQuestionCards: 5,
+		playerAnswerCards: 5,
+		maxAnswersPerPlayer: 1,
+		maxPlayers: 20
 	}
 </script>
 
@@ -128,18 +135,43 @@
 		<h1 class="h3">Izvēlies noteikumus</h1>
 		<p>Izvēlies kādus noteikumus vēlies izmantot spēlē.</p>
 
-		<div class="form">
+		<div class="form grid grid-cols-3 gap-8">
 			<label class="label">
-				<input type="checkbox" class="checkbox" />
-				<span>AAAAA</span>
+				<span>Max. spēlēju skaits</span>
+				<input type="number" class="input" bind:value={gameRules.maxPlayers} min="0" max="20" />
 			</label>
+
 			<label class="label">
-				<input type="checkbox" class="checkbox" />
-				<span>AAAAA</span>
+				<span>Vadītāja jautājuma kārtis</span>
+				<input
+					type="number"
+					class="input"
+					bind:value={gameRules.hostQuestionCards}
+					min="2"
+					max="20"
+				/>
 			</label>
+
 			<label class="label">
-				<input type="checkbox" class="checkbox" />
-				<span>AAAAA</span>
+				<span>Spēlēja atbilžu kārtis</span>
+				<input
+					type="number"
+					class="input"
+					bind:value={gameRules.playerAnswerCards}
+					min="2"
+					max="20"
+				/>
+			</label>
+
+			<label class="label">
+				<span>Max. atbilžu skaits</span>
+				<input
+					type="number"
+					class="input"
+					bind:value={gameRules.maxAnswersPerPlayer}
+					min="1"
+					max="5"
+				/>
 			</label>
 		</div>
 	</Step>
