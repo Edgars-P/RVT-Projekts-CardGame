@@ -12,6 +12,10 @@
 	import QrCode from "$lib/components/QrCode.svelte"
 	import DraggableObject from "$lib/components/DraggableObject.svelte"
 	import { fly } from "svelte/transition"
+	import { scale } from "svelte/transition"
+	import { getToastStore } from "@skeletonlabs/skeleton"
+
+	const toast = getToastStore()
 
 	const gameId = $page.url.searchParams.get("id") as string
 
@@ -107,17 +111,37 @@
 			<a href={gameUrl} target="_blank" class="flex">
 				<QrCode url={gameUrl} />
 			</a>
-
-			<a href="/game/host/moves?id={gameId}">Beigt spēli!</a>
 		</div>
 
-		<div class="players">
-			Spēlētāji:
-			{#each $gamePlayers ?? [] as player}
-				<div class="chip variant-filled m-1 px-5">
+		<div class="players card h-max grid grid-cols-1 gap-1 p-3">
+			<div class="h3 text-center">Spēlētāji:</div>
+			{#each $gamePlayers ?? [] as player (player.id)}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<div
+					class="card p-1 text-center bg-surface-300 card-hover cursor-pointer hover:bg-error-300"
+					transition:scale
+					on:click={() => {
+						// Delete player
+						$pb
+							?.collection("speletaji")
+							.delete(player.id)
+							.then(() => {
+								$gamePlayers = $gamePlayers.filter((p) => p.id != player.id)
+								toast.trigger({
+									message: "Spēlētājs izdzēsts!",
+									background: "variant-filled-error"
+								})
+							})
+					}}
+				>
 					{player.name}
 				</div>
 			{/each}
+
+			<a href="/game/host/moves?id={gameId}" class="btn variant-filled-error mt-3">
+				Beigt spēli!
+			</a>
 		</div>
 
 		<hr />

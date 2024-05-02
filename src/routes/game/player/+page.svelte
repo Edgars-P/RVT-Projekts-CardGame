@@ -71,6 +71,14 @@
 					console.log("gameRecord", gameRecord)
 					set(gameRecord)
 				})
+				.catch((e) => {
+					// Ja ir notikusi kļūda, visdrīzāk spēlētājs ir idzēsts
+					console.error(e)
+					if (localStorage.getItem("player_pass")) {
+						localStorage.clear()
+						location.reload()
+					}
+				})
 
 			$pb?.collection("speles").subscribe(gameId, function (e) {
 				console.log(e)

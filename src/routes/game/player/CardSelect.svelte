@@ -5,11 +5,13 @@
 	import type { RecordModel } from "pocketbase"
 	import { writable } from "svelte/store"
 	import { createGameMoveStore } from "../host/gameMoves"
+	import AccountButton from "../../AccountButton.svelte"
 
 	const toast = getToastStore()
 
 	export let gameCardSets: string[]
 	export let gameMoves: RecordModel[]
+	export let maxCards: number
 
 	console.log(gameCardSets)
 
@@ -32,15 +34,15 @@
 
 <div class="wrap">
 	<div class="flex flex-nowrap overflow-x-scroll snap-x snap-mandatory">
-		{#each $cards.sort(() => Math.random() - 0.5) as card}
+		{#each $cards.sort(() => Math.random() - 0.5).slice(0, maxCards) as card}
 			<div class="flex-shrink-0 snap-center">
 				<GameCard card={card.id}>
 					<button
 						class="btn variant-filled-primary absolute -bottom-2 left-1/2 -translate-x-1/2"
 						on:click={() => {
 							/* 
-							Izspēlē izvēlēto kārti
-						*/
+								Izspēlē izvēlēto kārti
+							*/
 							$playerPb
 								?.collection("spelesGajieni")
 								.create({
