@@ -75,7 +75,13 @@
 					// Ja ir notikusi kļūda, visdrīzāk spēlētājs ir idzēsts
 					console.error(e)
 					if (localStorage.getItem("player_pass")) {
-						localStorage.clear()
+						// Delete only entries with player_ prefix
+						Object.keys(localStorage).forEach((key) => {
+							if (String(key).startsWith("player_")) {
+								console.log("remove", key)
+								localStorage.removeItem(String(key))
+							}
+						})
 						location.reload()
 					}
 				})
@@ -148,7 +154,11 @@
 
 		{#if $gameRecord?.karsuKomplekti}
 			{#if $gameMoves.every((move) => move.player !== playerRecord?.id)}
-				<CardSelect gameCardSets={$gameRecord?.karsuKomplekti} gameMoves={$gameMoves} />
+				<CardSelect
+					gameCardSets={$gameRecord?.karsuKomplekti}
+					gameMoves={$gameMoves}
+					maxCards={$gameRecord?.noteikumi?.playerAnswerCards}
+				/>
 			{:else}
 				<div class="w-max mx-auto card p-5 mt-10">Spēles kārts ir izspēlēta!</div>
 			{/if}
