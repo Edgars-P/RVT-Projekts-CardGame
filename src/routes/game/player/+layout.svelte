@@ -1,11 +1,11 @@
 <script>
-    import {onMount} from "svelte"
+	import { onMount } from "svelte"
 
-    let name = ""
+	let name = ""
 
-    onMount(() => {
-        name = localStorage.getItem("player_name") ?? ""
-    })
+	onMount(() => {
+		name = localStorage.getItem("player_name") ?? ""
+	})
 </script>
 
 <!-- 
@@ -13,19 +13,21 @@
 -->
 
 {#if !name}
-    <form on:submit|preventDefault={(e) => {
-        let data = new FormData(e.currentTarget)
-        console.log(data);
-        let formName = data.get("name")?.toString() ?? ""
-        console.log(formName);
-        localStorage.setItem("player_name", formName)
-        name = formName
-    }}>
-        <h1>Vārds?</h1>
-        <input type="text" name="name" id="name" required>
-        <button>Pievienoties!</button>
-    </form>
-
+	<form
+		on:submit|preventDefault={(e) => {
+			let data = new FormData(e.currentTarget)
+			console.log(data)
+			let formName = data.get("name")?.toString() ?? ""
+			console.log(formName)
+			localStorage.setItem("player_name", formName)
+			name = formName
+		}}
+		class="card max-w-96 p-3 mx-auto mt-20 text-center grid grid-cols-1 gap-4"
+	>
+		<h1 class="h3 text-center">Vārds?</h1>
+		<input type="text" name="name" id="name" class="input" required />
+		<button class="btn variant-filled-primary">Ienākt</button>
+	</form>
 {:else}
-    <slot />
+	<slot />
 {/if}
