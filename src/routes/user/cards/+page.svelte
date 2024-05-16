@@ -113,51 +113,7 @@
 </div>
 
 <div class="card max-w-xl mx-auto p-3 mb-12">
-	<div class="font-bold text-center">Izveidot jaunu kārti</div>
-	<div class="content">
-		<form
-			on:submit={async (e) => {
-				e.preventDefault()
-				const form = e.currentTarget
-				const formData = new FormData(form)
-
-				const card = await $pb
-					?.collection("spelesKartis")
-					.create({
-						virsraksts: formData.get("virsraksts")?.toString() ?? "",
-						saturs: formData.get("saturs")?.toString() ?? "",
-						karsuKomplekts: $page.url.searchParams.get("cardSet"),
-						tips: formData.get("tips")?.toString() ?? "jautajuma",
-						custom: "{}"
-					})
-					.then((card) => {
-						cards.update((cards) => [...cards, card])
-						form.reset()
-					})
-			}}
-		>
-			<label class="label">
-				Virsraksts
-				<input class="input" type="text" name="virsraksts" id="virsraksts" />
-			</label>
-			<label class="label">
-				Saturs
-				<textarea class="input" name="saturs" id="saturs"></textarea>
-			</label>
-			<label class="label">
-				Tips
-				<select class="input" name="tips" id="tips">
-					<option value="jautajuma">Jautājuma</option>
-					<option value="atbilzu">Atbildes</option>
-				</select>
-			</label>
-			<button class="btn variant-filled-primary block mx-auto mt-3">Izveidot</button>
-		</form>
-	</div>
-</div>
-
-<div class="card max-w-xl mx-auto p-3 mb-12">
-	<div class="font-bold text-center">Ievietot kārtis no saraksta</div>
+	<div class="font-bold text-center">Izveidot jaunas kārtis</div>
 	<div class="content">
 		<form
 			on:submit={async (e) => {
@@ -175,11 +131,11 @@
 					await $pb
 						?.collection("spelesKartis")
 						.create({
-							virsraksts: formData.get("tips")?.toString() ?? "jautajuma",
+							virsraksts: formData.get("title")?.toString(),
 							saturs: card,
 							karsuKomplekts: $page.url.searchParams.get("cardSet"),
 							tips: formData.get("tips")?.toString() ?? "jautajuma",
-							custom: "{}"
+							custom: formData.get("custom")?.toString() ?? "{}"
 						})
 						.then((card) => {
 							cards.update((cards) => [...cards, card])
@@ -193,10 +149,44 @@
 				<input class="input" type="text" name="title" id="title" />
 			</label>
 			<label class="label">
-				Kārtis (katra kārts jaunā rindā)
+				Saturs (katra kārts jaunā rindā)
 				<textarea class="input" name="saturi" id="saturi"></textarea>
+			</label>
+			<label class="label">
+				Tips
+				<select class="input" name="tips" id="tips">
+					<option value="jautajuma">Jautājuma</option>
+					<option value="atbilzu">Atbildes</option>
+				</select>
+			</label>
+			<label class="label">
+				Papildus dati (piem. krāsa, īpašas darbības, utt.)
+				<textarea class="input" name="custom" id="custom"></textarea>
 			</label>
 			<button class="btn variant-filled-primary block mx-auto mt-3">Izveidot</button>
 		</form>
 	</div>
 </div>
+
+<!-- Fix cards with "custom" as string instead of JSON -->
+<button
+	on:click={() => {
+		let toUpdate = $cards.length
+		$cards.forEach((card, i) => {
+			if (typeof card.custom == "string") {
+				console.log("fix", card.custom)
+
+				setTimeout(async () => {
+					await $pb?.collection("spelesKartis").update(card.id, {
+						custom: eval(`let i = ${card.custom}; i`)
+					})
+					toUpdate--
+					console.log(toUpdate)
+				}, 100 * i)
+			}
+		})
+	}}
+	class="btn variant-filled-primary block mx-auto my-5"
+>
+	Salabot datu struktūru
+</button>
