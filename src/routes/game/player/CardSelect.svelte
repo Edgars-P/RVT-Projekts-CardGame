@@ -30,11 +30,62 @@
 				set(cardSets)
 			})
 	})
+
+	// Samaisa kārtis, garantējos ka vismaz viena kārts no katras kategorijas
+	// tiks parādīta
+	function shuffleCards(cards: RecordModel[], maxCards: number): RecordModel[] {
+		// Ja neviena kārts neatbilst, atgriez tukšu
+		if (!cards.length) return []
+
+		// Izveido masīvu ar visiem virsrakstiem
+		let allTitles = Object.keys(
+			cards.reduce((acc: Record<string, boolean>, card) => {
+				console.log(card.virsraksts)
+				// Viegls veids kā tikt vaļā no duplikātiem
+				acc[card.virsraksts as string] = true
+				return acc
+			}, {})
+			// Uzreiz samaisa virsrakstus, lai pat ja ir vairāk virsrakstu nekā kārts
+			// visiem ir iespēja parādīties
+		).sort(() => Math.random() - 0.5)
+
+		console.log({ allTitles })
+
+		// Sadala pašas kārtis un tās samaisa
+		let cardsPerTitle: Record<string, RecordModel[]> = {}
+		for (const title of allTitles) {
+			cardsPerTitle[title] = cards
+				.filter((card) => card.virsraksts == title)
+				.sort(() => Math.random() - 0.5)
+		}
+
+		console.log({ cardsPerTitle })
+
+		// Izvelk vienu kārti no katras virsrakstu kaudzes līdz ir sasniegts maxCards
+		let finalCards: RecordModel[] = []
+		for (let i = 0; finalCards.length < maxCards; i++) {
+			const title = allTitles[i % allTitles.length]
+			console.log({ title })
+
+			// Ja kaudze tukša, mēģināt nākamo
+			// TODO: Ja visas kaudzes beidzas, šis būs bezgalīgs
+			if (!cardsPerTitle[title].length) {
+				continue
+			}
+
+			// Izvelk kārti un pievieno gala masīvam
+			const card = cardsPerTitle[title].shift() as RecordModel
+			finalCards.push(card)
+		}
+
+		return finalCards
+	}
 </script>
 
 <div class="wrap">
 	<div class="flex flex-nowrap overflow-x-scroll snap-x snap-mandatory">
-		{#each $cards.sort(() => Math.random() - 0.5).slice(0, maxCards) as card}
+		{maxCards}
+		{#each shuffleCards($cards ?? [], maxCards) as card}
 			<div class="flex-shrink-0 snap-center">
 				<GameCard card={card.id}>
 					<button
