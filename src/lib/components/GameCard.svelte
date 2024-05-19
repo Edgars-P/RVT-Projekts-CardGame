@@ -8,10 +8,10 @@
 
 {#if $pb}
 	{#await typeof card == "string" ? getCard($pb, card) : card}
-		<div class="card w-[13rem] h-[20rem] m-4 p-4 relative shadow-lg flex-shrink-0" />
+		<div class="card w-[13rem] h-[20rem] m-4 p-4 relative shadow-lg flex-shrink-0 rounded-lg" />
 	{:then data}
 		<div
-			class="card w-[13rem] h-[20rem] m-4 p-3 relative shadow-lg flex-shrink-0"
+			class="card w-[13rem] h-[20rem] m-4 p-3 relative shadow-lg flex-shrink-0 rounded-lg"
 			style="background-color: color-mix(in hsl, {data?.custom
 				?.color} 40%, rgb(var(--color-surface-100)))"
 		>
