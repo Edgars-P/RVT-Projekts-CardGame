@@ -1,12 +1,15 @@
 <script lang="ts">
+	import { topZIndex } from "$lib/draggableObjectHelper"
 	import { createEventDispatcher } from "svelte"
 
 	const emit = createEventDispatcher()
 
 	let isPickedUp = false
 
+	let thisZIndex = 0
+
 	const mouseDown = (e: MouseEvent) => {
-		// Drag and drop logic
+		// Uzstāda mainīgos
 		const card = e.currentTarget as HTMLDivElement
 		const rect = card.getBoundingClientRect()
 		const offsetX = e.clientX - rect.left
@@ -14,32 +17,33 @@
 
 		isPickedUp = true
 
-		globalThis.zIndex ||= 20
+		// Palielina globālo z-index lai pārējās kārtis sev uzliek mazāku.
+		// Šādā veidā z-index nebūs lielāks par 100 un kārtis nerādīsies virs pop-up logiem.
+		$topZIndex++
+		thisZIndex = $topZIndex
 
-		card.style.zIndex = (globalThis.zIndex++).toString()
-
-		const onMouseMove = (e) => {
+		// Ja pele kustas, tad lai kārts tai seko.
+		const onMouseMove = (e: MouseEvent) => {
 			card.style.position = "absolute"
 			card.style.left = `${e.clientX - offsetX}px`
 			card.style.top = `${e.clientY - offsetY}px`
 		}
 
+		// Pelei paceļoties satīra aiz sevis
 		const onMouseUp = (e: MouseEvent) => {
 			window.removeEventListener("mousemove", onMouseMove)
 			window.removeEventListener("mouseup", onMouseUp)
 
 			isPickedUp = false
 
-			// If card is partially off screen either horisonally and vertically
+			// Ja kārts ir ārpus loga, to izņemt
 			const rect = card.getBoundingClientRect()
-
 			if (
 				rect.left < 0 ||
 				rect.right > window.innerWidth ||
 				rect.top < 0 ||
 				rect.bottom > window.innerHeight
 			) {
-				// Remove card from hand
 				emit("remove")
 			}
 		}
@@ -52,6 +56,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
 	class="select-none transition-[transform] {isPickedUp && 'rotate-6 scale-110'}"
+	style="z-index: {Math.max(20 - ($topZIndex - thisZIndex), 1)}"
 	on:mousedown={mouseDown}
 >
 	<slot />
