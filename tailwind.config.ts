@@ -14,7 +14,11 @@ const config = {
 		join(require.resolve("@skeletonlabs/skeleton"), "../**/*.{html,js,svelte,ts}")
 	],
 	theme: {
-		extend: {}
+		extend: {
+			fontFamily: {
+				cardtitle: ["'Poetsen One', sans-serif"]
+			}
+		}
 	},
 	plugins: [
 		// 4. Append the Skeleton plugin (after other plugins)
