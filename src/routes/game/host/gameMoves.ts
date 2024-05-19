@@ -27,15 +27,18 @@ export function createGameMoveStore(gameId: string, pb: Writable<PocketBase | un
 							if (event.action === "create" && event.record.game == gameId) {
 								let x = event.record
 
-								console.log(x)
-
 								// Expand nestrādā ar reāllaika datiem
+								if (!x.expand) x.expand = {}
+
 								if (x.card) {
-									if (!x.expand) x.expand = {}
 									x.expand.card = await getCard($pb, x.card)
-									x.player.lenghth > 1 &&
-										(x.expand.player = await $pb.collection("speletaji").getOne(x.player))
 								}
+
+								if (x.player) {
+									x.expand.player = await $pb.collection("speletaji").getOne(x.player)
+								}
+
+								console.log("gamemoves", x)
 
 								// Pievieno jauno gājienu pie store
 								update((prev) => [...prev, x])
@@ -63,7 +66,7 @@ export function createCurrentGameMovesStore(
 			console.log("allMoves", $allGameMoves)
 
 			const lastQuestionIndex = $allGameMoves.findLastIndex(
-				(x) => x.expand?.card.tips == "jautajuma" || x.card == ""
+				(x) => x.expand?.card?.tips == "jautajuma" || x.card == ""
 			)
 
 			console.log("lastQuestionIndex", lastQuestionIndex)
