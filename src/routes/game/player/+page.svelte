@@ -144,10 +144,7 @@
 </script>
 
 {#if playerRecord && playerRecord.game == gameId}
-	<span class="font-bold">Vārds: </span>
 	{#if $gameMoves[0]}
-		{playerRecord.name}
-
 		<div class="w-max mx-auto">
 			<GameCard card={$gameMoves[0].expand?.card} />
 		</div>
