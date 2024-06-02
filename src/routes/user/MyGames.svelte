@@ -9,6 +9,7 @@
 			?.collection("speles")
 			.getFullList({ filter: `raditajs = "${$account?.id}"`, expand: "karsuKomplekti" })
 			.then((games) => {
+				console.log("games", games)
 				set(games)
 			})
 	})
@@ -27,7 +28,7 @@
 	Drukāt
 </button>
 
-<div class="wrap max-w-3xl mx-auto">
+<div class="wrap max-w-3xl mx-auto printWrap" bind:this={printObject}>
 	<h1 class="h3 text-center">Manas spēles</h1>
 
 	{#each $myGames as game}
@@ -36,15 +37,15 @@
 			<span class="content">
 				<ul>
 					<li>
-						Spēles noteikumi: {#each game.noteikumi ?? [] as noteikums}
-							<span class="chip variant-filled m-1">
-								{noteikums}
+						Spēles noteikumi: {#each Object.entries(game.noteikumi ?? {}) as [noteikums, value]}
+							<span class="chip variant-filled-tertiary m-1">
+								{noteikums}: {value}
 							</span>
 						{/each}
 					</li>
 					<li>
 						Kāršu komplekti: {#each game.expand?.karsuKomplekti.map((x) => x.name) ?? [] as cardSetName}
-							<span class="chip variant-filled m-1">{cardSetName}</span>
+							<span class="chip variant-filled-secondary m-1">{cardSetName}</span>
 						{/each}
 					</li>
 				</ul>
