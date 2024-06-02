@@ -28,8 +28,8 @@
 <!--
 	Galvenais lapas izkārtojums.
 -->
-<AppShell>
-	<svelte:fragment slot="pageHeader">
+<div>
+	<div class="topbar print:hidden">
 		{#if !$page.url.pathname.startsWith("/game/player")}
 			<!--
 			Lapas galvene
@@ -88,6 +88,6 @@
 				</svelte:fragment>
 			</AppBar>
 		{/if}
-	</svelte:fragment>
+	</div>
 	<slot />
-</AppShell>
+</div>

@@ -47,7 +47,7 @@
 	}
 </script>
 
-<div class="game-summary">
+<div class="game-summary p-3 print:p-0">
 	<h2 class="h1 text-center">Spēles gājieni</h2>
 
 	<Table source={createSource($gameMoves)}></Table>
@@ -56,31 +56,22 @@
 		on:click={() => {
 			window.print()
 		}}
-		class="btn variant-filled-primary"
+		class="btn variant-filled-primary print:hidden"
 	>
 		Drukāt
 	</button>
 </div>
 
 <style>
-	.game-summary {
-		padding: 20px;
-	}
-
-	.summary-table {
-		width: 100%;
-		border-collapse: collapse;
-		margin-top: 10px;
-	}
-
-	.summary-table th,
-	.summary-table td {
-		border: 1px solid #ccc;
-		padding: 10px;
-		text-align: center;
-	}
-
-	.summary-table th {
-		background-color: #f0f0f0;
+	@media print {
+		:global(table) {
+			border: 2px solid gray;
+			width: 100vw !important;
+		}
+		:global(td, th) {
+			border: 2px solid gray;
+			white-space: normal !important;
+			max-width: 32vw;
+		}
 	}
 </style>
