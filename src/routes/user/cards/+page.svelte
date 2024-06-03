@@ -136,7 +136,7 @@
 							saturs: card,
 							karsuKomplekts: $page.url.searchParams.get("cardSet"),
 							tips: formData.get("tips")?.toString() ?? "jautajuma",
-							custom: formData.get("custom")?.toString() ?? "{}"
+							custom: JSON.parse(formData.get("custom")?.toString() ?? "{}")
 						})
 						.then((card) => {
 							cards.update((cards) => [...cards, card])
