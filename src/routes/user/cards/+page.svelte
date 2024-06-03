@@ -61,11 +61,12 @@
 		>
 			<label class="label">
 				Nosaukums
-				<input class="input" type="text" name="name" id="name" value={$cardSet.name} />
+				<input class="input" type="text" name="name" id="name" value={$cardSet.name} required />
 			</label>
 			<label class="label">
 				Apraksts
-				<textarea class="input" name="description" id="description">{$cardSet.description}</textarea
+				<textarea class="input" name="description" id="description" required
+					>{$cardSet.description}</textarea
 				>
 			</label>
 			<button class="btn variant-filled-primary">Saglabāt</button>
@@ -146,22 +147,22 @@
 		>
 			<label class="label">
 				Virsraksts
-				<input class="input" type="text" name="title" id="title" />
+				<input class="input" type="text" name="title" id="title" required />
 			</label>
 			<label class="label">
 				Saturs (katra kārts jaunā rindā)
-				<textarea class="input" name="saturi" id="saturi"></textarea>
+				<textarea class="input" name="saturi" id="saturi" required></textarea>
 			</label>
 			<label class="label">
 				Tips
-				<select class="input" name="tips" id="tips">
+				<select class="input" name="tips" id="tips" required>
 					<option value="jautajuma">Jautājuma</option>
 					<option value="atbilzu">Atbildes</option>
 				</select>
 			</label>
 			<label class="label">
 				Papildus dati (piem. krāsa, īpašas darbības, utt.)
-				<textarea class="input" name="custom" id="custom"></textarea>
+				<textarea class="input" name="custom" id="custom" required></textarea>
 			</label>
 			<button class="btn variant-filled-primary block mx-auto mt-3">Izveidot</button>
 		</form>

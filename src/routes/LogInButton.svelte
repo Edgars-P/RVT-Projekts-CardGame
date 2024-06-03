@@ -72,11 +72,11 @@
 				<form>
 					<label class="label">
 						<span>Lietotājvārds</span>
-						<input type="text" class="input" bind:value={input.username} />
+						<input type="text" class="input" bind:value={input.username} required />
 					</label>
 					<label class="label">
 						<span>Parole</span>
-						<input class="input" type="password" bind:value={input.password} />
+						<input class="input" type="password" bind:value={input.password} required />
 					</label>
 					<button
 						type="submit"
@@ -112,15 +112,15 @@
 				<form>
 					<label class="label">
 						<span>Lietotājvārds</span>
-						<input type="text" class="input" bind:value={input.username} />
+						<input type="text" class="input" bind:value={input.username} required />
 					</label>
 					<label class="label">
 						<span>Parole</span>
-						<input type="password" class="input" bind:value={input.password} />
+						<input type="password" class="input" bind:value={input.password} required />
 					</label>
 					<label class="label">
 						<span>Parole (atkārtoti)</span>
-						<input type="password" class="input" bind:value={input.confirmPassword} />
+						<input type="password" class="input" bind:value={input.confirmPassword} required />
 					</label>
 					<button
 						type="submit"

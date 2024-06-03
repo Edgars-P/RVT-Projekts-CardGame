@@ -40,12 +40,24 @@
 
 	<label class="label">
 		Lietotājvārds
-		<input type="text" name="username" class="input input-bordered" placeholder="Lietotājvārds" />
+		<input
+			type="text"
+			name="username"
+			class="input input-bordered"
+			placeholder="Lietotājvārds"
+			required
+		/>
 	</label>
 
 	<label class="label">
 		Parole
-		<input type="password" name="password" class="input input-bordered" placeholder="Parole" />
+		<input
+			type="password"
+			name="password"
+			class="input input-bordered"
+			placeholder="Parole"
+			required
+		/>
 	</label>
 
 	<button class="btn btn-primary variant-filled-primary mt-3 mx-auto block">Ienākt</button>

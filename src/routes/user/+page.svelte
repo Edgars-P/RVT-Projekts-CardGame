@@ -43,14 +43,14 @@
 						<div>
 							<label class="label">
 								Vārds
-								<input type="text" name="name" class="input" value={$account?.name} />
+								<input type="text" name="name" class="input" value={$account?.name} required />
 							</label>
 						</div>
 
 						<div>
 							<label class="label">
 								E-pasts
-								<input type="email" name="email" class="input" value={$account?.email} />
+								<input type="email" name="email" class="input" value={$account?.email} required />
 							</label>
 						</div>
 					</div>
@@ -75,21 +75,21 @@
 						<div>
 							<label class="label">
 								Parole
-								<input type="password" name="oldPassword" class="input" />
+								<input type="password" name="oldPassword" class="input" required />
 							</label>
 						</div>
 
 						<div>
 							<label class="label">
 								Jaunā parole
-								<input type="password" name="password" class="input" />
+								<input type="password" name="password" class="input" required />
 							</label>
 						</div>
 
 						<div>
 							<label class="label">
 								Jaunā parole atkārtoti
-								<input type="password" name="passwordConfirm" class="input" />
+								<input type="password" name="passwordConfirm" class="input" required />
 							</label>
 						</div>
 					</div>

@@ -86,14 +86,14 @@
 				<div>
 					<label class="label">
 						Nosaukums
-						<input type="text" name="name" class="input" />
+						<input type="text" name="name" class="input" required />
 					</label>
 				</div>
 
 				<div>
 					<label class="label">
 						Apraksts
-						<textarea name="description" class="input" />
+						<textarea name="description" class="input" required />
 					</label>
 				</div>
 
