@@ -30,7 +30,7 @@
 		<div slot="panel" class="p-4">
 			{#if tabSet == 0}
 				<form
-					on:submit={async (e) => {
+					on:submit|preventDefault={async (e) => {
 						e.preventDefault()
 						const form = e.currentTarget
 						const formData = new FormData(form)
@@ -62,7 +62,7 @@
 			{:else if tabSet == 1}
 				<!-- Mainīt paroli -->
 				<form
-					on:submit={async (e) => {
+					on:submit|preventDefault={async (e) => {
 						e.preventDefault()
 						const form = e.currentTarget
 						const formData = new FormData(form)

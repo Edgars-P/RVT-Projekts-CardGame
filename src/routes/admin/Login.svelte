@@ -14,7 +14,7 @@
 
 <form
 	class="card card-body card-flat max-w-lg p-3 mx-auto mt-4"
-	on:submit={async (e) => {
+	on:submit|preventDefault={async (e) => {
 		e.preventDefault()
 		const data = new FormData(e.currentTarget)
 

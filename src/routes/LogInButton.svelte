@@ -69,7 +69,28 @@
 				<!--
 					Pierakstīšanās forma.
 				-->
-				<form>
+				<form
+					on:submit|preventDefault={(e) => {
+						/*
+						Pierakstās ar lietotājvārdu un paroli.
+						Ja tas izdodas, tad atjauno lapu.
+					*/
+						$pb &&
+							$pb
+								.collection("lietotaji")
+								.authWithPassword(input.username, input.password)
+								.then((x) => {
+									location.reload()
+								})
+								.catch((err) => {
+									console.log(err)
+									toast.trigger({
+										message: "Nepareizs lietotājvārds vai parole!",
+										background: "variant-filled-warning"
+									})
+								})
+					}}
+				>
 					<label class="label">
 						<span>Lietotājvārds</span>
 						<input type="text" class="input" bind:value={input.username} required />
@@ -78,38 +99,54 @@
 						<span>Parole</span>
 						<input class="input" type="password" bind:value={input.password} required />
 					</label>
-					<button
-						type="submit"
-						class="btn variant-filled block mt-3 mx-auto"
-						on:click={() => {
-							/*
-								Pierakstās ar lietotājvārdu un paroli.
-								Ja tas izdodas, tad atjauno lapu.
-							*/
-							$pb &&
-								$pb
-									.collection("lietotaji")
-									.authWithPassword(input.username, input.password)
-									.then((x) => {
-										location.reload()
-									})
-									.catch((err) => {
-										console.log(err)
-										toast.trigger({
-											message: "Nepareizs lietotājvārds vai parole!",
-											background: "variant-filled-warning"
-										})
-									})
-						}}
-					>
-						Ienākt
-					</button>
+					<button type="submit" class="btn variant-filled block mt-3 mx-auto"> Ienākt </button>
 				</form>
 			{:else if currentTab == "register"}
 				<!--
 					Reģistrācijas forma.
 				-->
-				<form>
+				<form
+					on:submit|preventDefault={async (e) => {
+						/*
+								Pārbauda vai paroles sakrīt.
+							*/
+						if (input.password != input.confirmPassword) {
+							toast.trigger({
+								message: "Paroles nesakrīt!",
+								background: "variant-filled-warning"
+							})
+							return
+						}
+
+						/*
+								Izveido lietotāju ar ievadīto lietotājvārdu un paroli.
+								Ja tas izdodas, tad atjauno lapu.
+							*/
+						$pb &&
+							$pb
+								.collection("lietotaji")
+								.create({
+									name: input.username,
+									email: Math.random().toString(36).substring(2, 15) + "@example.com",
+									username: input.username,
+									password: input.password,
+									passwordConfirm: input.confirmPassword
+								})
+								.then((x) => {
+									alert(
+										"Reģistrācija izdevās! Lūdams pierakstīties ar Jūsu lietotājvārdu un paroli."
+									)
+									location.reload()
+								})
+								.catch((err) => {
+									console.log(err.data.data)
+									toast.trigger({
+										message: "Reģistrācija neizdevās!",
+										background: "variant-filled-warning"
+									})
+								})
+					}}
+				>
 					<label class="label">
 						<span>Lietotājvārds</span>
 						<input type="text" class="input" bind:value={input.username} required />
@@ -122,50 +159,7 @@
 						<span>Parole (atkārtoti)</span>
 						<input type="password" class="input" bind:value={input.confirmPassword} required />
 					</label>
-					<button
-						type="submit"
-						class="btn variant-filled block mt-3 mx-auto"
-						on:click={() => {
-							/*
-								Pārbauda vai paroles sakrīt.
-							*/
-							if (input.password != input.confirmPassword) {
-								toast.trigger({
-									message: "Paroles nesakrīt!",
-									background: "variant-filled-warning"
-								})
-								return
-							}
-
-							/*
-								Izveido lietotāju ar ievadīto lietotājvārdu un paroli.
-								Ja tas izdodas, tad atjauno lapu.
-							*/
-							$pb &&
-								$pb
-									.collection("lietotaji")
-									.create({
-										name: input.username,
-										email: Math.random().toString(36).substring(2, 15) + "@example.com",
-										username: input.username,
-										password: input.password,
-										passwordConfirm: input.confirmPassword
-									})
-									.then((x) => {
-										alert(
-											"Reģistrācija izdevās! Lūdams pierakstīties ar Jūsu lietotājvārdu un paroli."
-										)
-										location.reload()
-									})
-									.catch((err) => {
-										console.log(err.data.data)
-										toast.trigger({
-											message: "Reģistrācija neizdevās!",
-											background: "variant-filled-warning"
-										})
-									})
-						}}
-					>
+					<button type="submit" class="btn variant-filled block mt-3 mx-auto">
 						Reģistrēties
 					</button>
 				</form>

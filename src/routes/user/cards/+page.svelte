@@ -50,7 +50,7 @@
 	<div class="font-bold text-center">Kāršu komplekts: {$cardSet.name}</div>
 	<div class="content">
 		<form
-			on:submit={async (e) => {
+			on:submit|preventDefault={async (e) => {
 				e.preventDefault()
 				const form = e.currentTarget
 				const formData = new FormData(form)
@@ -117,7 +117,7 @@
 	<div class="font-bold text-center">Izveidot jaunas kārtis</div>
 	<div class="content">
 		<form
-			on:submit={async (e) => {
+			on:submit|preventDefault={async (e) => {
 				e.preventDefault()
 				const form = e.currentTarget
 				const formData = new FormData(form)
