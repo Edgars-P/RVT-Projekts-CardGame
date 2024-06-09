@@ -36,8 +36,8 @@
 	Spēles administrācijas lapa
 	Satur informāciju par lietoājiem, kārtīm, spēlēm, un citu saturu.
 -->
-<div class="flex justify-center gap-5 pt-3">
-	<h1 class="h1">Administratora rīki</h1>
+<div class="flex justify-center align-items-center gap-5 pt-3 pb-2">
+	<h1 class="h3">Administratora rīki</h1>
 
 	<button
 		class="btn btn-primary variant-filled-primary"
@@ -53,7 +53,7 @@
 <!--
 	Administrāciojas lapas navigācija
 -->
-<div class="mx-5 mb-5">
+<div class="mx-5 mb-5 bg-surface-100 rounded-lg shadow-xl">
 	<TabGroup>
 		<Tab bind:group={tabSet} name="Lietotāji" value={0}>Lietotāji</Tab>
 		<Tab bind:group={tabSet} name="Kāršu komplekti" value={1}>Kāršu komplekti</Tab>

@@ -38,6 +38,7 @@
 				gridColumns="grid-cols-3"
 				slotDefault="place-self-center"
 				slotTrail="place-content-end"
+				shadow="shadow-xl"
 			>
 				<!--
 				Navigācijas pogas
@@ -89,5 +90,6 @@
 			</AppBar>
 		{/if}
 	</div>
+
 	<slot />
 </div>
