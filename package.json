@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "pnpm i && concurrently \"vite dev\" \"npm:db\" \"npm:tunnel\"",
 		"build": "vite build",
-		"preview": "vite preview",
+		"preview": "concurrently \"vite preview\" \"npm:db\"",
 		"db": "pocketbase serve",
 		"tunnel": "ngrok http --domain=generous-adjusted-pegasus.ngrok-free.app 8080",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

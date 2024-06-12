@@ -15,3 +15,16 @@ body {
 	background-position: center, center;
 	background-repeat: no-repeat, no-repeat;
 }
+
+@media print {
+	table {
+		border: 2px solid gray;
+		width: 100vw !important;
+	}
+	td,
+	th {
+		border: 2px solid gray;
+		white-space: normal !important;
+		max-width: 32vw;
+	}
+}

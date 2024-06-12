@@ -29,6 +29,8 @@
 		selectedItemId = undefined
 	}
 
+	const tabTitles = ["Lietotāji", "Kāršu komplekti", "Kārtis", "Spēles", "Spēlētāji"]
+
 	let selectedItemId: string | undefined
 </script>
 
@@ -37,10 +39,10 @@
 	Satur informāciju par lietoājiem, kārtīm, spēlēm, un citu saturu.
 -->
 <div class="flex justify-center align-items-center gap-5 pt-3 pb-2">
-	<h1 class="h3">Administratora rīki</h1>
+	<h1 class="h3">Administratora rīki - {tabTitles[tabSet]}</h1>
 
 	<button
-		class="btn btn-primary variant-filled-primary"
+		class="btn btn-primary variant-filled-primary print:hidden"
 		on:click={() => {
 			$adminPb?.authStore.clear()
 			location.reload()
@@ -53,7 +55,7 @@
 <!--
 	Administrāciojas lapas navigācija
 -->
-<div class="mx-5 mb-5 bg-surface-100 rounded-lg shadow-xl">
+<div class="mx-5 mb-5 bg-surface-100 rounded-lg shadow-xl print:shadow-none print:m-0">
 	<TabGroup>
 		<Tab bind:group={tabSet} name="Lietotāji" value={0}>Lietotāji</Tab>
 		<Tab bind:group={tabSet} name="Kāršu komplekti" value={1}>Kāršu komplekti</Tab>
@@ -73,7 +75,7 @@
 			{/if}
 
 			{#if tabSet == 0}
-				{#await $adminPb?.collection("lietotaji").getFullList({ filter })}
+				{#await $adminPb?.collection("lietotaji").getFullList({ filter, sort: "-created" })}
 					<p>Ielādē...</p>
 				{:then data}
 					<Table
@@ -89,7 +91,7 @@
 					/>
 				{/await}
 			{:else if tabSet == 1}
-				{#await $adminPb?.collection("karsuKomplekti").getFullList({ filter })}
+				{#await $adminPb?.collection("karsuKomplekti").getFullList({ filter, sort: "-created" })}
 					<p>Ielādē...</p>
 				{:then data}
 					<Table
@@ -121,7 +123,7 @@
 					/>
 				{/await}
 			{:else if tabSet == 2}
-				{#await $adminPb?.collection("spelesKartis").getFullList({ filter })}
+				{#await $adminPb?.collection("spelesKartis").getFullList({ filter, sort: "-created" })}
 					<p>Ielādē...</p>
 				{:then data}
 					<Table
@@ -144,7 +146,7 @@
 					/>
 				{/await}
 			{:else if tabSet == 3}
-				{#await $adminPb?.collection("speles").getFullList({ filter })}
+				{#await $adminPb?.collection("speles").getFullList({ filter, sort: "-created" })}
 					<p>Ielādē...</p>
 				{:then data}
 					<Table

@@ -61,17 +61,3 @@
 		Drukāt
 	</button>
 </div>
-
-<style>
-	@media print {
-		:global(table) {
-			border: 2px solid gray;
-			width: 100vw !important;
-		}
-		:global(td, th) {
-			border: 2px solid gray;
-			white-space: normal !important;
-			max-width: 32vw;
-		}
-	}
-</style>
