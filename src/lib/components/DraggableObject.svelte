@@ -12,8 +12,13 @@
 		// Uzstāda mainīgos
 		const card = e.currentTarget as HTMLDivElement
 		const rect = card.getBoundingClientRect()
-		const offsetX = e.clientX - rect.left
-		const offsetY = e.clientY - rect.top
+
+		// Create top and left relative to the page
+		const top = window.scrollY + rect.top
+		const left = window.scrollX + rect.left
+
+		const offsetX = e.pageX - left
+		const offsetY = e.pageY - top
 
 		isPickedUp = true
 
@@ -25,8 +30,8 @@
 		// Ja pele kustas, tad lai kārts tai seko.
 		const onMouseMove = (e: MouseEvent) => {
 			card.style.position = "absolute"
-			card.style.left = `${e.clientX - offsetX}px`
-			card.style.top = `${e.clientY - offsetY}px`
+			card.style.left = `${e.pageX - offsetX}px`
+			card.style.top = `${e.pageY - offsetY}px`
 		}
 
 		// Pelei paceļoties satīra aiz sevis

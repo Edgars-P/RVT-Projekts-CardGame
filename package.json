@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "pnpm i && concurrently \"vite dev\" \"npm:db\" \"npm:tunnel\"",
+		"dev": "pnpm i && concurrently \"vite dev\" \"npm:db\"",
 		"build": "vite build",
 		"preview": "concurrently \"vite preview\" \"npm:db\"",
 		"demo": "concurrently \"caddy run --config Caddyfile\" \"npm:db\" \"npm:tunnel\"",
