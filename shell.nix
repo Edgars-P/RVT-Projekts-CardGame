@@ -39,6 +39,8 @@ in pkgs.mkShell {
     nodejs_18
 		nodePackages.pnpm
 		newPocketbase
+		caddy
+		cloudflared
   ];
 
 }

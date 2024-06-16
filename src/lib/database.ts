@@ -1,14 +1,15 @@
 import { browser } from "$app/environment"
-import { derived, readable, writable } from "svelte/store"
+import { derived, get, readable, writable } from "svelte/store"
 import PocketBase, {
 	AsyncAuthStore,
 	BaseAuthStore,
 	LocalAuthStore,
 	type AuthModel
 } from "pocketbase"
+import { page } from "$app/stores"
 
-// Ja kods tiek testēts codespaces, ir nepieciešams izmantot puplisi pieejamo datu bāzes URL
-const PB_ADDRESS = import.meta.env.CODESPACES ? `https://${import.meta.env.CODESPACE_NAME}-8090.${import.meta.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}` : "http://localhost:8090"
+// Izmanto pašreizējo URL ja ir prod.
+const PB_ADDRESS = import.meta.env.DEV ? "http://localhost:8090" : globalThis?.location?.origin
 
 /*
 	Atsevišķas AuthStore implementācijas lai 

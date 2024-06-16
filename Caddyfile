@@ -1,0 +1,14 @@
+# Proxy /api/* to localhost:8090
+# serve everything else from ./build
+http://:8888 {
+
+	handle /api/* {
+		reverse_proxy /api/* localhost:8090
+	}
+
+	handle {
+		root * build
+		try_files {path} /app.html
+		file_server
+	}
+}
